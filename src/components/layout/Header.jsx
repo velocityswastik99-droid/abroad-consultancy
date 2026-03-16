@@ -1,200 +1,513 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, Mail, ChevronDown, MapPin, Target, Award } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { COMPANY_INFO } from '../../utils/constants';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const location = useLocation();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   const navigation = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
+    { 
+      name: 'Home', 
+      path: '/',
+      icon: '🏠'
+    },
+    { 
+      name: 'About Us', 
+      path: '/about',
+      icon: '📋'
+    },
     { 
       name: 'Services', 
       path: '/services',
+      icon: '⚙️',
+      roadmap: ['Explore', 'Choose', 'Start'],
       dropdown: [
-        { name: 'All Services', path: '/services' },
-        { name: 'University Admissions', path: '/services/universities' },
-        { name: 'Courses & Programs', path: '/services/courses-programs' },
-        { name: 'Visa Assistance', path: '/services/visa-assistance' },
-        { name: 'Test Preparation', path: '/services/test-preparation' },
-        { name: 'Success Stories', path: '/services/success-stories' },
+        { name: 'All Services', path: '/services', icon: '🔍' },
+        { name: 'University Admissions', path: '/services/universities', icon: '🎓' },
+        { name: 'Courses & Programs', path: '/services/courses-programs', icon: '📚' },
+        { name: 'Visa Assistance', path: '/services/visa-assistance', icon: '✈️' },
+        { name: 'Test Preparation', path: '/services/test-preparation', icon: '📝' },
+        { name: 'Success Stories', path: '/services/success-stories', icon: '⭐' },
       ]
     },
     { 
       name: 'Study Abroad', 
       path: '/study-usa',
+      icon: '🌍',
+      roadmap: ['Select', 'Apply', 'Go'],
       dropdown: [
-        { name: 'Study in USA', path: '/study-usa' },
-        { name: 'Study in UK', path: '/study-uk' },
-        { name: 'Study in Canada', path: '/study-canada' },
-        { name: 'Study in Australia', path: '/study-australia' },
-        { name: 'Study in Germany', path: '/study-germany' },
+        { name: 'Study in USA', path: '/study-usa', icon: '🇺🇸' },
+        { name: 'Study in UK', path: '/study-uk', icon: '🇬🇧' },
+        { name: 'Study in Canada', path: '/study-canada', icon: '🇨🇦' },
+        { name: 'Study in Australia', path: '/study-australia', icon: '🇦🇺' },
+        { name: 'Study in Germany', path: '/study-germany', icon: '🇩🇪' },
       ]
     },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' },
+    { 
+      name: 'Blog', 
+      path: '/blog',
+      icon: '📰'
+    },
+    { 
+      name: 'Contact', 
+      path: '/contact',
+      icon: '📞'
+    },
   ];
+
+  // Roadmap progress indicator component
+  const RoadmapIndicator = ({ steps, currentStep = 0 }) => (
+    <div className="flex items-center space-x-1 mt-1">
+      {steps.map((step, index) => (
+        <div key={index} className="flex items-center">
+          <div className={`w-1.5 h-1.5 rounded-full ${
+            index <= currentStep ? 'bg-red-500' : 'bg-gray-300'
+          }`} />
+          {index < steps.length - 1 && (
+            <div className={`w-3 h-0.5 ${
+              index < currentStep ? 'bg-red-300' : 'bg-gray-200'
+            }`} />
+          )}
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-primary-700 text-white py-2">
-        <div className="container-custom flex flex-col md:flex-row justify-between items-center text-sm space-y-1 md:space-y-0">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <Phone size={14} />
-              <span>{COMPANY_INFO.phone}</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-2">
-              <Mail size={14} />
-              <span>{COMPANY_INFO.email}</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/free-consultation" className="hover:text-secondary-300 transition text-xs md:text-sm">
-              Free Consultation
-            </Link>
-            <span className="hidden md:inline">|</span>
-            <Link to="/faq" className="hover:text-secondary-300 transition text-xs md:text-sm">
-              FAQ
-            </Link>
+      {/* Top Bar - Red Theme */}
+      <motion.div 
+        className="bg-gradient-to-r from-red-600 to-red-700 text-white py-2 relative overflow-hidden"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Animated background effect */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-32 h-32 bg-white rounded-full"
+                initial={{
+                  x: -100,
+                  y: Math.random() * 100,
+                }}
+                animate={{
+                  x: window.innerWidth + 100,
+                  y: Math.random() * 100,
+                }}
+                transition={{
+                  duration: Math.random() * 10 + 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+            ))}
           </div>
         </div>
-      </div>
+
+        <div className="container-custom flex flex-col md:flex-row justify-between items-center text-sm space-y-1 md:space-y-0 relative z-10">
+          <div className="flex items-center space-x-4">
+            <motion.div 
+              className="flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Phone size={14} />
+              <span>{COMPANY_INFO.phone}</span>
+            </motion.div>
+            <motion.div 
+              className="hidden md:flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Mail size={14} />
+              <span>{COMPANY_INFO.email}</span>
+            </motion.div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link to="/free-consultation" className="hover:text-red-200 transition text-xs md:text-sm flex items-center space-x-1">
+                <Target size={12} />
+                <span>Free Consultation</span>
+              </Link>
+            </motion.div>
+            <span className="hidden md:inline text-red-200">|</span>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link to="/faq" className="hover:text-red-200 transition text-xs md:text-sm flex items-center space-x-1">
+                <Award size={12} />
+                <span>FAQ</span>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Main Header */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
+      <motion.header 
+        className={`bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
+          scrolled ? 'shadow-lg' : 'shadow-md'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        {/* Red gradient line at top */}
+        <div className="h-1 bg-gradient-to-r from-red-300 via-red-600 to-red-300" />
+        
         <nav className="container-custom">
           <div className="flex justify-between items-center h-16 md:h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 md:space-x-3">
-              <div className="w-8 h-8 md:w-10 md:h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg md:text-xl">GEC</span>
-              </div>
-              <div>
-                <h1 className="text-xl md:text-2xl font-bold text-primary-800">
-                  GlobalEdu<span className="text-secondary-600">Consult</span>
-                </h1>
-                <p className="text-xs text-gray-500 hidden md:block">Study Abroad Experts</p>
-              </div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
-              {navigation.map((item) => (
-                <div 
-                  key={item.name} 
-                  className="relative group"
-                  onMouseEnter={() => setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+            {/* Logo with red theme */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex-shrink-0"
+            >
+              <Link to="/" className="flex items-center space-x-2 md:space-x-3 group">
+                <motion.div 
+                  className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center shadow-lg relative overflow-hidden"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  <Link
-                    to={item.path}
-                    className={`flex items-center space-x-1 py-2 ${
-                      location.pathname === item.path || 
-                      (item.dropdown && item.dropdown.some(d => d.path === location.pathname))
-                        ? 'text-primary-600 font-semibold'
-                        : 'text-gray-700 hover:text-primary-600'
-                    } transition`}
-                  >
-                    <span className="text-sm md:text-base">{item.name}</span>
-                    {item.dropdown && (
-                      <ChevronDown size={16} className={`transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
-                    )}
-                  </Link>
-                  
-                  {/* Dropdown */}
-                  {item.dropdown && activeDropdown === item.name && (
-                    <div className="absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-lg py-2 border border-gray-100">
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition text-sm"
-                          onClick={() => setActiveDropdown(null)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  {/* Animated shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                  <span className="text-white font-bold text-lg md:text-xl">GEC</span>
+                </motion.div>
+                <div>
+                  <h1 className="text-xl md:text-2xl font-bold leading-tight">
+                    <span className="text-red-600">GlobalEdu</span>
+                    <span className="text-gray-800">Consult</span>
+                  </h1>
+                  <p className="text-xs text-gray-500 hidden md:flex items-center space-x-1">
+                    <MapPin size={10} className="text-red-400" />
+                    <span>Study Abroad Experts</span>
+                  </p>
                 </div>
-              ))}
+              </Link>
+            </motion.div>
+
+            {/* Desktop Navigation - Flex with auto margins */}
+            <div className="hidden lg:flex items-center justify-end flex-1 min-w-0">
+              <div className="flex items-center space-x-1 overflow-x-auto hide-scrollbar px-2">
+                {navigation.map((item) => (
+                  <motion.div 
+                    key={item.name} 
+                    className="relative flex-shrink-0"
+                    onHoverStart={() => setActiveDropdown(item.name)}
+                    onHoverEnd={() => setActiveDropdown(null)}
+                    whileHover={{ y: -2 }}
+                  >
+                    <Link
+                      to={item.path}
+                      className={`flex items-center space-x-1 px-2 py-2 rounded-lg transition-all duration-300 ${
+                        location.pathname === item.path || 
+                        (item.dropdown && item.dropdown.some(d => d.path === location.pathname))
+                          ? 'text-red-600 bg-red-50 font-semibold'
+                          : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
+                      }`}
+                    >
+                      <span className="text-lg">{item.icon}</span>
+                      <span className="text-sm font-medium whitespace-nowrap">{item.name}</span>
+                      {item.dropdown && (
+                        <motion.div
+                          animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="ml-0.5"
+                        >
+                          <ChevronDown size={14} />
+                        </motion.div>
+                      )}
+                    </Link>
+                    
+                    {/* Roadmap mini indicator */}
+                    {item.roadmap && (
+                      <div className="absolute -bottom-2 left-0 right-0 flex justify-center">
+                        <RoadmapIndicator steps={item.roadmap} currentStep={0} />
+                      </div>
+                    )}
+                    
+                    {/* Dropdown with roadmap style */}
+                    <AnimatePresence>
+                      {item.dropdown && activeDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-xl py-2 border border-red-100 overflow-hidden"
+                          style={{ minWidth: '240px', zIndex: 60 }}
+                        >
+                          {/* Red gradient header */}
+                          <div className="h-1 bg-gradient-to-r from-red-300 via-red-500 to-red-300" />
+                          
+                          {/* Dropdown items with roadmap connectors */}
+                          {item.dropdown.map((subItem, index) => (
+                            <motion.div
+                              key={subItem.name}
+                              initial={{ x: -20, opacity: 0 }}
+                              animate={{ x: 0, opacity: 1 }}
+                              transition={{ delay: index * 0.05 }}
+                            >
+                              <Link
+                                to={subItem.path}
+                                className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition group relative"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {/* Roadmap connector line */}
+                                {index < item.dropdown.length - 1 && (
+                                  <div className="absolute left-6 top-10 w-0.5 h-6 bg-gradient-to-b from-red-200 to-transparent" />
+                                )}
+                                
+                                <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-lg group-hover:bg-red-100 transition flex-shrink-0">
+                                  {subItem.icon}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <span className="text-sm font-medium block truncate">{subItem.name}</span>
+                                  {/* Step indicator */}
+                                  <div className="flex items-center space-x-1 mt-1">
+                                    <div className="w-1 h-1 rounded-full bg-red-400" />
+                                    <div className="w-2 h-0.5 bg-red-200" />
+                                    <div className="w-1 h-1 rounded-full bg-red-300" />
+                                  </div>
+                                </div>
+                                
+                                {/* Hover effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/5 to-red-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                              </Link>
+                            </motion.div>
+                          ))}
+                          
+                          {/* Footer with call to action */}
+                          <div className="px-4 py-3 bg-gradient-to-r from-red-50 to-red-100/50 mt-2">
+                            <div className="flex items-center justify-between text-xs">
+                              <span className="text-red-600 font-medium">Need help?</span>
+                              <Link to="/contact" className="text-red-700 hover:text-red-800 font-semibold flex items-center space-x-1">
+                                <span>Contact us</span>
+                                <ChevronDown size={12} className="rotate-270" />
+                              </Link>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Apply Now Button - Right aligned with left margin */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex-shrink-0 ml-2"
+            >
               <Link
                 to="/free-consultation"
-                className="btn-secondary px-4 md:px-6 text-sm md:text-base"
+                className="btn-secondary px-4 py-2 text-sm font-semibold bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group rounded-lg whitespace-nowrap inline-flex items-center"
               >
-                Apply Now
+                <span className="relative z-10 flex items-center space-x-1">
+                  <Target size={14} />
+                  <span>Apply Now</span>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
               </Link>
-            </div>
+            </motion.div>
 
             {/* Mobile menu button */}
-            <button
+            <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+              className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition flex-shrink-0"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </motion.button>
           </div>
 
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden bg-white border-t py-4 animate-slide-up">
-              <div className="space-y-1">
-                {navigation.map((item) => (
-                  <div key={item.name}>
-                    <div className="flex flex-col">
-                      <Link
-                        to={item.path}
-                        className="flex justify-between items-center py-3 px-4 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded transition"
-                        onClick={() => {
-                          if (!item.dropdown) setIsMenuOpen(false);
-                        }}
-                      >
-                        <span>{item.name}</span>
-                        {item.dropdown && (
-                          <ChevronDown size={16} className={`transition-transform ${
-                            activeDropdown === item.name ? 'rotate-180' : ''
-                          }`} />
-                        )}
-                      </Link>
-                      {item.dropdown && activeDropdown === item.name && (
-                        <div className="pl-6 space-y-1">
-                          {item.dropdown.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              to={subItem.path}
-                              className="block py-2 px-4 text-gray-600 hover:text-primary-600 transition text-sm"
-                              onClick={() => {
-                                setIsMenuOpen(false);
-                                setActiveDropdown(null);
-                              }}
+          {/* Mobile Navigation with roadmap style */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="lg:hidden bg-white border-t border-red-100 overflow-hidden"
+              >
+                <div className="py-4 space-y-1 max-h-[80vh] overflow-y-auto">
+                  {navigation.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <div className="flex flex-col">
+                        <div className="flex items-center justify-between px-4">
+                          <Link
+                            to={item.path}
+                            className="flex items-center space-x-3 py-3 text-gray-700 hover:text-red-600 transition flex-1"
+                            onClick={() => {
+                              if (!item.dropdown) setIsMenuOpen(false);
+                            }}
+                          >
+                            <span className="text-xl">{item.icon}</span>
+                            <span className="font-medium">{item.name}</span>
+                            {item.roadmap && (
+                              <div className="ml-2">
+                                <RoadmapIndicator steps={item.roadmap} currentStep={0} />
+                              </div>
+                            )}
+                          </Link>
+                          {item.dropdown && (
+                            <motion.button
+                              onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                              animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="p-2 hover:bg-red-50 rounded-lg"
                             >
-                              {subItem.name}
-                            </Link>
-                          ))}
+                              <ChevronDown size={16} className="text-red-600" />
+                            </motion.button>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-                <div className="pt-4 px-4">
-                  <Link
-                    to="/free-consultation"
-                    className="block btn-secondary text-center"
-                    onClick={() => setIsMenuOpen(false)}
+                        
+                        {/* Mobile dropdown with roadmap */}
+                        <AnimatePresence>
+                          {item.dropdown && activeDropdown === item.name && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pl-12 pr-4 space-y-2 pb-2">
+                                {item.dropdown.map((subItem, subIndex) => (
+                                  <motion.div
+                                    key={subItem.name}
+                                    initial={{ x: -10, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: subIndex * 0.05 }}
+                                  >
+                                    <Link
+                                      to={subItem.path}
+                                      className="flex items-center space-x-3 py-2 px-3 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition group relative"
+                                      onClick={() => {
+                                        setIsMenuOpen(false);
+                                        setActiveDropdown(null);
+                                      }}
+                                    >
+                                      {/* Roadmap line */}
+                                      {subIndex < item.dropdown.length - 1 && (
+                                        <div className="absolute left-4 top-6 w-0.5 h-6 bg-gradient-to-b from-red-200 to-transparent" />
+                                      )}
+                                      
+                                      <div className="w-6 h-6 bg-red-50 rounded flex items-center justify-center text-sm group-hover:bg-red-100 flex-shrink-0">
+                                        {subItem.icon}
+                                      </div>
+                                      <span className="text-sm flex-1">{subItem.name}</span>
+                                      
+                                      {/* Step indicator */}
+                                      <div className="flex items-center space-x-1 flex-shrink-0">
+                                        <div className="w-1 h-1 rounded-full bg-red-300" />
+                                        <div className="w-2 h-0.5 bg-red-200" />
+                                        <div className="w-1 h-1 rounded-full bg-red-400" />
+                                      </div>
+                                    </Link>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </motion.div>
+                  ))}
+                  
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="pt-4 px-4"
                   >
-                    Apply Now
-                  </Link>
+                    <Link
+                      to="/free-consultation"
+                      className="block w-full btn-secondary text-center bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 shadow-lg py-3 rounded-lg font-semibold"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Apply Now
+                    </Link>
+                    
+                    {/* Mobile roadmap footer */}
+                    <div className="mt-4 flex items-center justify-center space-x-4 text-xs text-gray-500">
+                      <div className="flex items-center space-x-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                        <span>Explore</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <span>Apply</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                        <span>Succeed</span>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-            </div>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
-      </header>
+        
+        {/* Bottom red line with mouse follow effect */}
+        <motion.div 
+          className="h-0.5 bg-gradient-to-r from-red-300 via-red-600 to-red-300"
+          style={{
+            background: `radial-gradient(circle at ${mousePosition.x}px 0%, rgba(239, 68, 68, 0.5), transparent 50%)`
+          }}
+        />
+      </motion.header>
+
+      {/* Add this style to hide scrollbar but keep functionality */}
+      <style jsx>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </>
   );
 };
