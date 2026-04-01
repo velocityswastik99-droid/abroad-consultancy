@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown, MapPin, Target, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,25 +8,55 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const location = useLocation();
+  const headerRef = useRef(null);
+
+  const topBarOrbs = useMemo(
+    () =>
+      Array.from({ length: 3 }, () => ({
+        size: 96 + Math.floor(Math.random() * 64),
+        top: Math.random() * 100,
+        duration: 18 + Math.random() * 12,
+        delay: -Math.random() * 10,
+      })),
+    []
+  );
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
 
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
     window.addEventListener('scroll', handleScroll);
+    const handleMouseMove = (e) => {
+      const headerEl = headerRef.current;
+      if (!headerEl) return;
+      const rect = headerEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      headerEl.style.setProperty('--mouse-x', `${x}px`);
+    };
     window.addEventListener('mousemove', handleMouseMove);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
+  }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setActiveDropdown(null);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMenuOpen(false);
+        setActiveDropdown(null);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const navigation = [
@@ -109,22 +139,17 @@ const Header = () => {
         {/* Animated background effect */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full">
-            {[...Array(3)].map((_, i) => (
-              <motion.div
+            {topBarOrbs.map((orb, i) => (
+              <div
                 key={i}
-                className="absolute w-32 h-32 bg-white rounded-full"
-                initial={{
-                  x: -100,
-                  y: Math.random() * 100,
-                }}
-                animate={{
-                  x: window.innerWidth + 100,
-                  y: Math.random() * 100,
-                }}
-                transition={{
-                  duration: Math.random() * 10 + 20,
-                  repeat: Infinity,
-                  ease: "linear"
+                className="absolute bg-white rounded-full animate-topbar-orb"
+                style={{
+                  width: `${orb.size}px`,
+                  height: `${orb.size}px`,
+                  top: `${orb.top}%`,
+                  left: '-12rem',
+                  '--orb-duration': `${orb.duration}s`,
+                  '--orb-delay': `${orb.delay}s`,
                 }}
               />
             ))}
@@ -180,6 +205,7 @@ const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
+        ref={headerRef}
       >
         {/* Red gradient line at top */}
         <div className="h-1 bg-gradient-to-r from-red-300 via-red-600 to-red-300" />
@@ -217,13 +243,19 @@ const Header = () => {
 
             {/* Desktop Navigation - Flex with auto margins */}
             <div className="hidden lg:flex items-center justify-end flex-1 min-w-0">
-              <div className="flex items-center space-x-1 overflow-x-auto hide-scrollbar px-2">
+              <div className="flex flex-wrap items-center gap-1 px-2">
                 {navigation.map((item) => (
                   <motion.div 
                     key={item.name} 
                     className="relative flex-shrink-0"
-                    onHoverStart={() => setActiveDropdown(item.name)}
-                    onHoverEnd={() => setActiveDropdown(null)}
+                    onHoverStart={() => item.dropdown && setActiveDropdown(item.name)}
+                    onHoverEnd={() => item.dropdown && setActiveDropdown(null)}
+                    onFocus={() => item.dropdown && setActiveDropdown(item.name)}
+                    onBlur={(e) => {
+                      if (item.dropdown && !e.currentTarget.contains(e.relatedTarget)) {
+                        setActiveDropdown(null);
+                      }
+                    }}
                     whileHover={{ y: -2 }}
                   >
                     <Link
@@ -234,6 +266,8 @@ const Header = () => {
                           ? 'text-red-600 bg-red-50 font-semibold'
                           : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
                       }`}
+                      aria-haspopup={item.dropdown ? 'menu' : undefined}
+                      aria-expanded={item.dropdown ? activeDropdown === item.name : undefined}
                     >
                       <span className="text-lg">{item.icon}</span>
                       <span className="text-sm font-medium whitespace-nowrap">{item.name}</span>
@@ -310,12 +344,12 @@ const Header = () => {
                           <div className="px-4 py-3 bg-gradient-to-r from-red-50 to-red-100/50 mt-2">
                             <div className="flex items-center justify-between text-xs">
                               <span className="text-red-600 font-medium">Need help?</span>
-                              <Link to="/contact" className="text-red-700 hover:text-red-800 font-semibold flex items-center space-x-1">
-                                <span>Contact us</span>
-                                <ChevronDown size={12} className="rotate-270" />
-                              </Link>
-                            </div>
-                          </div>
+                          <Link to="/contact" className="text-red-700 hover:text-red-800 font-semibold flex items-center space-x-1">
+                            <span>Contact us</span>
+                            <ChevronDown size={12} className="-rotate-90" />
+                          </Link>
+                        </div>
+                      </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -348,6 +382,9 @@ const Header = () => {
               className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition flex-shrink-0"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label="Toggle navigation menu"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -362,6 +399,7 @@ const Header = () => {
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
                 className="lg:hidden bg-white border-t border-red-100 overflow-hidden"
+                id="mobile-menu"
               >
                 <div className="py-4 space-y-1 max-h-[80vh] overflow-y-auto">
                   {navigation.map((item, index) => (
@@ -377,7 +415,8 @@ const Header = () => {
                             to={item.path}
                             className="flex items-center space-x-3 py-3 text-gray-700 hover:text-red-600 transition flex-1"
                             onClick={() => {
-                              if (!item.dropdown) setIsMenuOpen(false);
+                              setIsMenuOpen(false);
+                              setActiveDropdown(null);
                             }}
                           >
                             <span className="text-xl">{item.icon}</span>
@@ -394,6 +433,8 @@ const Header = () => {
                               animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
                               transition={{ duration: 0.3 }}
                               className="p-2 hover:bg-red-50 rounded-lg"
+                              aria-label={`Toggle ${item.name} submenu`}
+                              aria-expanded={activeDropdown === item.name}
                             >
                               <ChevronDown size={16} className="text-red-600" />
                             </motion.button>
@@ -493,21 +534,10 @@ const Header = () => {
         <motion.div 
           className="h-0.5 bg-gradient-to-r from-red-300 via-red-600 to-red-300"
           style={{
-            background: `radial-gradient(circle at ${mousePosition.x}px 0%, rgba(239, 68, 68, 0.5), transparent 50%)`
+            background: 'radial-gradient(circle at var(--mouse-x, 50%) 0px, rgba(239, 68, 68, 0.5), transparent 50%)'
           }}
         />
       </motion.header>
-
-      {/* Add this style to hide scrollbar but keep functionality */}
-      <style jsx>{`
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </>
   );
 };

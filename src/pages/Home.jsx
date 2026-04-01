@@ -1,15 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import HeroSection from '../components/sections/HeroSection';
 import ServicesSection from '../components/sections/ServicesSection';
 import CountriesSection from '../components/sections/CountriesSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import CTASection from '../components/sections/CTASection';
-import { useState, useEffect } from 'react';
 
 const Home = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -19,11 +17,39 @@ const Home = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
+  const floatingParticles = useMemo(() => {
+    const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const height = typeof window !== 'undefined' ? window.innerHeight : 800;
+    return Array.from({ length: 20 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      driftX: (Math.random() - 0.5) * width * 0.25,
+      driftY: (Math.random() - 0.5) * height * 0.25,
+      duration: 12 + Math.random() * 18,
+      delay: -Math.random() * 10,
+      size: 4 + Math.random() * 6,
+    }));
+  }, []);
+
+  const statsOrbs = useMemo(() => {
+    const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const height = typeof window !== 'undefined' ? window.innerHeight : 800;
+    return Array.from({ length: 5 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      driftX: (Math.random() - 0.5) * width * 0.3,
+      driftY: (Math.random() - 0.5) * height * 0.3,
+      duration: 14 + Math.random() * 16,
+      delay: -Math.random() * 8,
+      size: 96 + Math.floor(Math.random() * 64),
+    }));
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      document.documentElement.style.setProperty('--home-mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--home-mouse-y', `${e.clientY}px`);
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
@@ -147,24 +173,27 @@ const Home = () => {
   // Floating particles animation in red theme
   const FloatingParticles = () => (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
+      {floatingParticles.map((particle, i) => (
         <motion.div
           key={i}
           className="absolute w-2 h-2 bg-red-500/20 rounded-full"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: particle.x,
+            y: particle.y,
           }}
           animate={{
-            x: [null, Math.random() * window.innerWidth],
-            y: [null, Math.random() * window.innerHeight],
+            x: [particle.x, particle.x + particle.driftX],
+            y: [particle.y, particle.y + particle.driftY],
+            opacity: [0.2, 0.6, 0.2],
           }}
           transition={{
-            duration: Math.random() * 20 + 10,
+            duration: particle.duration,
+            delay: particle.delay,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "linear"
           }}
+          style={{ width: particle.size, height: particle.size }}
         />
       ))}
     </div>
@@ -198,7 +227,7 @@ const Home = () => {
   );
 
   return (
-    <>
+    <div ref={containerRef} className="relative">
       <Helmet>
         <title>GlobalEduConsult | Study Abroad Experts for USA, UK, Canada, Australia, Germany</title>
         <meta name="description" content="Expert study abroad consultancy for USA, UK, Canada, Australia & Germany. University admissions, visa assistance, scholarship guidance & test preparation." />
@@ -222,9 +251,9 @@ const Home = () => {
         
         {/* Red overlay effect based on mouse position */}
         <div 
-          className="absolute inset-0 bg-gradient-radial from-red-500/5 to-transparent"
+          className="absolute inset-0"
           style={{
-            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(239, 68, 68, 0.15), transparent 50%)`
+            background: 'radial-gradient(circle at var(--home-mouse-x, 50%) var(--home-mouse-y, 50%), rgba(239, 68, 68, 0.15), transparent 50%)'
           }}
         />
       </div>
@@ -347,23 +376,27 @@ const Home = () => {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute top-0 left-0 w-full h-full">
-            {[...Array(5)].map((_, i) => (
+            {statsOrbs.map((orb, i) => (
               <motion.div
                 key={i}
-                className="absolute w-32 h-32 bg-white/5 rounded-full"
+                className="absolute bg-white/5 rounded-full"
                 initial={{
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
+                  x: orb.x,
+                  y: orb.y,
                 }}
                 animate={{
-                  x: [null, Math.random() * window.innerWidth],
-                  y: [null, Math.random() * window.innerHeight],
+                  x: [orb.x, orb.x + orb.driftX],
+                  y: [orb.y, orb.y + orb.driftY],
+                  opacity: [0.2, 0.6, 0.2],
                 }}
                 transition={{
-                  duration: Math.random() * 20 + 10,
+                  duration: orb.duration,
+                  delay: orb.delay,
                   repeat: Infinity,
-                  repeatType: "reverse"
+                  repeatType: "reverse",
+                  ease: "linear"
                 }}
+                style={{ width: orb.size, height: orb.size }}
               />
             ))}
           </div>
@@ -593,7 +626,7 @@ const Home = () => {
       </motion.div>
 
       <CTASection />
-    </>
+    </div>
   );
 };
 

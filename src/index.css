@@ -176,7 +176,7 @@
 
   .section-subtitle::before,
   .section-subtitle::after {
-    content: '•';
+    content: '\2022';
     @apply text-primary-300 mx-2;
   }
 
@@ -314,6 +314,15 @@
     }
   }
 
+  @keyframes topbar-orb {
+    from {
+      transform: translateX(-12rem);
+    }
+    to {
+      transform: translateX(calc(100vw + 12rem));
+    }
+  }
+
   /* Animation Classes */
   .animate-slide-up {
     animation: slideUp 0.3s ease-out;
@@ -333,6 +342,11 @@
 
   .animate-progress {
     animation: progress 2s ease-out forwards;
+  }
+
+  .animate-topbar-orb {
+    animation: topbar-orb var(--orb-duration, 24s) linear infinite;
+    animation-delay: var(--orb-delay, 0s);
   }
 
   /* Animation Delays */

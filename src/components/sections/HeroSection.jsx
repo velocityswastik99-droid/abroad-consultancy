@@ -1,17 +1,37 @@
 import { Link } from 'react-router-dom';
 import { PlayCircle, Award, Globe, Users, Target, MapPin, TrendingUp, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const sectionRef = useRef(null);
+
+  const particles = useMemo(() => {
+    const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const height = typeof window !== 'undefined' ? window.innerHeight : 800;
+    return Array.from({ length: 20 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      driftX: (Math.random() - 0.5) * width * 0.3,
+      driftY: (Math.random() - 0.5) * height * 0.3,
+      duration: 12 + Math.random() * 18,
+      delay: -Math.random() * 10,
+      size: 4 + Math.random() * 6,
+    }));
+  }, []);
 
   useEffect(() => {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      const rect = sectionEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      sectionEl.style.setProperty('--mouse-x', `${x}px`);
+      sectionEl.style.setProperty('--mouse-y', `${y}px`);
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    sectionEl.addEventListener('mousemove', handleMouseMove);
+    return () => sectionEl.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   // Roadmap steps
@@ -23,7 +43,11 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white"
+      style={{ '--mouse-x': '50%', '--mouse-y': '50%' }}
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         {/* Red gradient overlays */}
@@ -31,24 +55,27 @@ const HeroSection = () => {
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-red-400/30 via-transparent to-transparent" />
         
         {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-white/20 rounded-full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: particle.x,
+              y: particle.y,
             }}
             animate={{
-              x: [null, Math.random() * window.innerWidth],
-              y: [null, Math.random() * window.innerHeight],
+              x: [particle.x, particle.x + particle.driftX],
+              y: [particle.y, particle.y + particle.driftY],
+              opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-              duration: Math.random() * 20 + 10,
+              duration: particle.duration,
+              delay: particle.delay,
               repeat: Infinity,
               repeatType: "reverse",
               ease: "linear"
             }}
+            style={{ width: particle.size, height: particle.size }}
           />
         ))}
         
@@ -56,7 +83,7 @@ const HeroSection = () => {
         <div 
           className="absolute inset-0 opacity-30"
           style={{
-            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 255, 0.3), transparent 50%)`
+            background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.3), transparent 50%)'
           }}
         />
       </div>

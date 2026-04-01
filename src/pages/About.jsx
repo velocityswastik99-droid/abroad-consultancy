@@ -1,13 +1,56 @@
 import { Helmet } from 'react-helmet-async';
-import { Users, Target, Eye, Award, CheckCircle } from 'lucide-react';
+import { Users, Target, Eye, Award, CheckCircle, MapPin, GraduationCap } from 'lucide-react';
+
+const TEAM_MEMBERS = [
+  { name: 'Dr. Sarah Johnson', role: 'Director - USA Admissions', experience: '15+ years' },
+  { name: 'Michael Chen', role: 'UK Education Expert', experience: '12+ years' },
+  { name: 'Priya Sharma', role: 'Visa & Immigration Head', experience: '10+ years' },
+  { name: 'David Wilson', role: 'Scholarship Consultant', experience: '8+ years' },
+];
+
+const VALUES = [
+  {
+    title: 'Student-Centric',
+    description: 'Your success is our priority',
+    icon: Users,
+    color: 'bg-blue-100 text-blue-600',
+  },
+  {
+    title: 'Integrity',
+    description: 'Honest and transparent processes',
+    icon: CheckCircle,
+    color: 'bg-green-100 text-green-600',
+  },
+  {
+    title: 'Excellence',
+    description: 'Commitment to quality service',
+    icon: Award,
+    color: 'bg-purple-100 text-purple-600',
+  },
+  {
+    title: 'Innovation',
+    description: 'Adapting to changing education trends',
+    icon: Target,
+    color: 'bg-orange-100 text-orange-600',
+  },
+];
+
+const MILESTONES = [
+  { year: '2010', title: 'Founded', detail: 'Started with a mission to simplify study abroad admissions.' },
+  { year: '2014', title: '500+ Students', detail: 'Expanded counseling services and partnerships.' },
+  { year: '2018', title: 'Global Reach', detail: 'Built relationships across 50+ countries.' },
+  { year: '2022', title: 'Digital Counseling', detail: 'Launched virtual counseling for faster support.' },
+  { year: '2025', title: '98% Visa Success', detail: 'Achieved a consistent high visa approval rate.' },
+];
+
+const STATS = [
+  { value: '5,000+', label: 'Students Guided', icon: GraduationCap },
+  { value: '50+', label: 'Countries Covered', icon: MapPin },
+  { value: '98%', label: 'Visa Success Rate', icon: CheckCircle },
+  { value: '15+', label: 'Years of Experience', icon: Award },
+];
 
 const About = () => {
-  const teamMembers = [
-    { name: 'Dr. Sarah Johnson', role: 'Director - USA Admissions', experience: '15+ years', image: '' },
-    { name: 'Michael Chen', role: 'UK Education Expert', experience: '12+ years', image: '' },
-    { name: 'Priya Sharma', role: 'Visa & Immigration Head', experience: '10+ years', image: '' },
-    { name: 'David Wilson', role: 'Scholarship Consultant', experience: '8+ years', image: '' },
-  ];
 
   return (
     <>
@@ -30,6 +73,17 @@ const About = () => {
       </div>
 
       <div className="container-custom py-16">
+        {/* Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center">
+              <stat.icon className="text-primary-600 mx-auto mb-3" size={28} />
+              <div className="text-2xl font-bold mb-1">{stat.value}</div>
+              <div className="text-sm text-gray-600">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
         {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div className="bg-white rounded-xl shadow-lg p-8">
@@ -98,14 +152,28 @@ const About = () => {
           </div>
         </div>
 
+        {/* Milestones */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center">Our Journey</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {MILESTONES.map((milestone) => (
+              <div key={milestone.year} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                <div className="text-primary-600 font-bold text-lg mb-2">{milestone.year}</div>
+                <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
+                <p className="text-gray-600">{milestone.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Team Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold mb-12 text-center">Meet Our Expert Team</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member) => (
+            {TEAM_MEMBERS.map((member) => (
               <div key={member.name} className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
                 <div className="w-24 h-24 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">
-                  {member.name.split(' ').map(n => n[0]).join('')}
+                  {member.name.split(' ').map((n) => n[0]).join('')}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-semibold mb-2">{member.role}</p>
@@ -122,34 +190,15 @@ const About = () => {
         <div>
           <h2 className="text-3xl font-bold mb-12 text-center">Our Core Values</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="text-blue-600" size={24} />
+            {VALUES.map((value) => (
+              <div key={value.title} className="bg-white rounded-xl p-6 text-center border border-gray-200">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${value.color}`}>
+                  <value.icon size={24} />
+                </div>
+                <h3 className="font-bold mb-2">{value.title}</h3>
+                <p className="text-gray-600 text-sm">{value.description}</p>
               </div>
-              <h3 className="font-bold mb-2">Student-Centric</h3>
-              <p className="text-gray-600 text-sm">Your success is our priority</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="text-green-600" size={24} />
-              </div>
-              <h3 className="font-bold mb-2">Integrity</h3>
-              <p className="text-gray-600 text-sm">Honest and transparent processes</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="text-purple-600" size={24} />
-              </div>
-              <h3 className="font-bold mb-2">Excellence</h3>
-              <p className="text-gray-600 text-sm">Commitment to quality service</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="text-orange-600" size={24} />
-              </div>
-              <h3 className="font-bold mb-2">Innovation</h3>
-              <p className="text-gray-600 text-sm">Adapting to changing education trends</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
