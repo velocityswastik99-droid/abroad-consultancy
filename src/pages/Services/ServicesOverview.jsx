@@ -15,7 +15,7 @@ const ServicesOverview = () => {
         />
       </Helmet>
 
-      <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <div className="bg-[#1a1a2e] text-white">
         <div className="container-custom py-16 md:py-24">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Comprehensive Services</h1>
@@ -37,7 +37,7 @@ const ServicesOverview = () => {
         <div className="mb-16">
           <h2 className="text-3xl font-bold mb-12 text-center">Our 5-Step Process</h2>
           <div className="relative">
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary-200"></div>
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#1a1a2e]/20"></div>
 
             <div className="space-y-12 md:space-y-0">
               {[
@@ -49,7 +49,7 @@ const ServicesOverview = () => {
               ].map((step, index) => (
                 <div key={step.number} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   <div
-                    className={`w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-xl z-10 ${
+                    className={`w-12 h-12 bg-[#1a1a2e] text-white rounded-full flex items-center justify-center font-bold text-xl z-10 ${
                       index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                     }`}
                   >
@@ -69,12 +69,12 @@ const ServicesOverview = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8 md:p-12 mb-16">
+        <div className="bg-slate-50 rounded-2xl p-8 md:p-12 mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Why Choose Our Services?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Users className="text-primary-600" size={24} />
+                <Users className="text-[#1a1a2e]" size={24} />
               </div>
               <h3 className="font-bold mb-2">Expert Team</h3>
               <p className="text-gray-600 text-sm">15+ years average experience</p>
@@ -88,7 +88,7 @@ const ServicesOverview = () => {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Globe className="text-secondary-600" size={24} />
+                <Globe className="text-[#1a1a2e]" size={24} />
               </div>
               <h3 className="font-bold mb-2">50+ Countries</h3>
               <p className="text-gray-600 text-sm">Extensive global network</p>
@@ -108,7 +108,7 @@ const ServicesOverview = () => {
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Book a free consultation with our experts and get a personalized roadmap for your study abroad journey.
           </p>
-          <Link to="/free-consultation" className="btn-secondary px-8 py-4 text-lg">
+          <Link to="/free-consultation" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition inline-flex items-center justify-center">
             Book Free Consultation
           </Link>
         </div>

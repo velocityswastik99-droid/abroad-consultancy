@@ -13,7 +13,7 @@ const BlogPost = () => {
       <div className="container-custom py-16 text-center">
         <h1 className="text-3xl font-bold mb-4">Article not found</h1>
         <p className="text-gray-600 mb-6">The blog post you are looking for doesn&apos;t exist.</p>
-        <Link to="/blog" className="text-red-600 font-semibold">
+        <Link to="/blog" className="text-[#1a1a2e] font-semibold">
           Back to Blog
         </Link>
       </div>
@@ -27,9 +27,9 @@ const BlogPost = () => {
         <meta name="description" content={post.excerpt} />
       </Helmet>
 
-      <section className="bg-gradient-to-r from-red-600 to-red-800 text-white">
+      <section className="bg-[#1a1a2e] text-white">
         <div className="container-custom py-12">
-          <div className="flex items-center text-sm text-red-100 mb-4">
+          <div className="flex items-center text-sm text-white/70 mb-4">
             <Link to="/" className="hover:text-white">Home</Link>
             <ChevronRight size={14} className="mx-2" />
             <Link to="/blog" className="hover:text-white">Blog</Link>
@@ -37,7 +37,7 @@ const BlogPost = () => {
             <span className="text-white">{post.title}</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
-          <p className="text-red-100 max-w-3xl">{post.excerpt}</p>
+          <p className="text-white/70 max-w-3xl">{post.excerpt}</p>
           <div className="flex flex-wrap gap-4 text-sm mt-6">
             <span className="inline-flex items-center gap-2">
               <Calendar size={16} /> {post.date}
@@ -67,7 +67,7 @@ const BlogPost = () => {
                     <div className="mt-4 space-y-2">
                       {block.points.map((point) => (
                         <div key={point} className="flex items-start gap-2">
-                          <span className="w-2 h-2 mt-2 rounded-full bg-red-500" />
+                          <span className="w-2 h-2 mt-2 rounded-full bg-[#1a1a2e]" />
                           <span className="text-gray-600">{point}</span>
                         </div>
                       ))}
@@ -78,26 +78,26 @@ const BlogPost = () => {
             </article>
 
             <aside className="space-y-6">
-              <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6">
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6">
                 <h3 className="text-lg font-bold mb-2">Key Takeaways</h3>
                 <div className="space-y-2">
                   {post.takeaways.map((item) => (
                     <div key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                      <span className="w-2 h-2 mt-2 rounded-full bg-red-500" />
+                      <span className="w-2 h-2 mt-2 rounded-full bg-[#1a1a2e]" />
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-white border border-red-100 rounded-2xl p-6 shadow-sm">
+              <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
                 <h3 className="text-lg font-bold mb-2">Need personalized guidance?</h3>
                 <p className="text-gray-600 text-sm mb-4">
                   Talk to our counselors and get a custom study abroad plan.
                 </p>
                 <Link
                   to="/free-consultation"
-                  className="inline-flex items-center justify-center w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg"
+                  className="inline-flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-3 rounded-lg transition"
                 >
                   Book Free Consultation
                 </Link>
@@ -107,7 +107,7 @@ const BlogPost = () => {
         </div>
       </section>
 
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-slate-50">
         <div className="container-custom">
           <h2 className="text-2xl md:text-3xl font-bold mb-8">Related Articles</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -117,7 +117,7 @@ const BlogPost = () => {
                 to={`/blog/${item.slug}`}
                 className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-lg transition"
               >
-                <div className="text-xs font-semibold text-red-600 mb-2">{item.category}</div>
+                <div className="text-xs font-semibold text-[#1a1a2e] mb-2">{item.category}</div>
                 <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                 <p className="text-sm text-gray-600 mb-4">{item.excerpt}</p>
                 <div className="flex items-center gap-3 text-xs text-gray-500">

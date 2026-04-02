@@ -14,7 +14,10 @@ function ServicesSection({ services = defaultServices }) {
               From university shortlisting to visa assistance, we provide end-to-end guidance tailored to your goals.
             </p>
           </div>
-          <Link to="/services" className="btn-outline text-center md:w-auto w-full">
+          <Link
+            to="/services"
+            className="text-center md:w-auto w-full border border-[#1a1a2e] text-[#1a1a2e] hover:bg-[#1a1a2e]/5 font-semibold py-3 px-6 rounded-lg transition"
+          >
             View All Services
           </Link>
         </div>
