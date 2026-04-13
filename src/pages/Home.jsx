@@ -167,6 +167,46 @@ const Home = () => {
       country: 'Canada',
       quote: 'From university selection to accommodation, they handled everything perfectly. Now I\'m pursuing my Master\'s in Canada.',
       rating: 5
+    },
+    {
+      id: 4,
+      name: 'Sneha Iyer',
+      university: 'University of Melbourne',
+      country: 'Australia',
+      quote: 'Their SOP guidance and university shortlisting were spot on. I received admits from two top Australian universities.',
+      rating: 5
+    },
+    {
+      id: 5,
+      name: 'Arjun Mehta',
+      university: 'TU Munich',
+      country: 'Germany',
+      quote: 'The team helped me build a strong profile and manage the entire application timeline. The process felt stress-free.',
+      rating: 5
+    },
+    {
+      id: 6,
+      name: 'Neha Reddy',
+      university: 'University of British Columbia',
+      country: 'Canada',
+      quote: 'From test prep to visa filing, every step was organized and transparent. I always knew what to do next.',
+      rating: 5
+    },
+    {
+      id: 7,
+      name: 'Karan Verma',
+      university: 'University of Manchester',
+      country: 'UK',
+      quote: 'They simplified the documentation and interview prep. I got my visa approval on the first attempt.',
+      rating: 5
+    },
+    {
+      id: 8,
+      name: 'Ananya Gupta',
+      university: 'Arizona State University',
+      country: 'USA',
+      quote: 'Regular follow-ups and honest feedback made a big difference. I secured a partial scholarship and a fast admit.',
+      rating: 5
     }
   ];
 
@@ -238,22 +278,22 @@ const Home = () => {
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <motion.div 
           style={{ scale, rotate }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-200/15 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
         />
         <motion.div 
           style={{ scale, rotate: useTransform(rotate, [0, 360], [0, -360]) }}
-          className="absolute top-1/3 right-1/4 w-96 h-96 bg-red-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-2000"
+          className="absolute top-1/3 right-1/4 w-96 h-96 bg-slate-300/15 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-2000"
         />
         <motion.div 
           style={{ scale }}
-          className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-rose-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-4000"
+          className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-slate-400/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-4000"
         />
         
         {/* Red overlay effect based on mouse position */}
         <div 
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at var(--home-mouse-x, 50%) var(--home-mouse-y, 50%), rgba(239, 68, 68, 0.15), transparent 50%)'
+            background: 'radial-gradient(circle at var(--home-mouse-x, 50%) var(--home-mouse-y, 50%), rgba(26, 26, 46, 0.2), transparent 55%)'
           }}
         />
       </div>
@@ -261,7 +301,7 @@ const Home = () => {
       <HeroSection />
       
       {/* Why Choose Us - Roadmap Style */}
-      <section className="section-padding bg-gradient-to-b from-white to-red-50 relative overflow-hidden">
+      <section className="section-padding bg-slate-50 relative overflow-hidden">
         <FloatingParticles />
         
         <div className="container-custom relative z-10">
@@ -276,7 +316,7 @@ const Home = () => {
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
-              className="inline-block px-6 py-2 bg-red-100 text-red-600 rounded-full text-sm font-bold mb-4"
+              className="inline-block px-6 py-2 bg-[#1a1a2e]/10 text-[#1a1a2e] rounded-full text-sm font-bold mb-4"
             >
               Your Journey Starts Here
             </motion.div>
@@ -289,7 +329,7 @@ const Home = () => {
           </motion.div>
           
           <RoadmapPath 
-            items={['Discovery Call', 'Profile Assessment', 'University Selection', 'Application', 'Visa Process', 'Arrival']}
+            items={['Discovery Call', 'Profile Assessment', 'University Selection', 'Application', 'Visa Process', 'Arrival', 'Part-Time Guidance', 'Full-Time Guidance']}
             className="mb-16"
           />
           
@@ -326,15 +366,15 @@ const Home = () => {
                 whileHover={{ y: -10 }}
                 className="relative bg-white rounded-2xl shadow-xl overflow-hidden group"
               >
-                {/* Red gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
+                {/* Navy gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#141427] opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
                 
                 {/* Animated border */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-300 via-red-500 to-red-300 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#1a1a2e]/40 via-[#1a1a2e]/70 to-[#1a1a2e]/40 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 
                 <div className="p-8">
                   <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6 shadow-lg"
+                    className="w-16 h-16 bg-gradient-to-br from-[#1a1a2e] to-[#141427] rounded-xl flex items-center justify-center mb-6 shadow-lg"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
@@ -354,12 +394,12 @@ const Home = () => {
                     {feature.steps.map((step, stepIndex) => (
                       <div key={stepIndex} className="flex items-center space-x-3">
                         <div className={`w-2 h-2 rounded-full ${
-                          stepIndex === 0 ? 'bg-red-400' :
-                          stepIndex === 1 ? 'bg-red-500' : 'bg-red-600'
+                          stepIndex === 0 ? 'bg-[#1a1a2e]/60' :
+                          stepIndex === 1 ? 'bg-[#1a1a2e]/80' : 'bg-[#1a1a2e]'
                         }`} />
                         <span className="text-sm text-gray-600">{step}</span>
                         {stepIndex < feature.steps.length - 1 && (
-                          <div className="flex-1 h-0.5 bg-gradient-to-r from-red-300 to-red-500" />
+                          <div className="flex-1 h-0.5 bg-gradient-to-r from-[#1a1a2e]/30 to-[#1a1a2e]/60" />
                         )}
                       </div>
                     ))}
@@ -372,7 +412,7 @@ const Home = () => {
       </section>
 
       {/* Animated Stats Counter - Red Theme */}
-      <section className="py-20 bg-gradient-to-r from-red-600 to-red-800 text-white relative overflow-hidden">
+      <section className="py-20 bg-[#1a1a2e] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute top-0 left-0 w-full h-full">
@@ -443,7 +483,7 @@ const Home = () => {
       <ServicesSection services={services} />
       
       {/* Roadmap-style Countries Section */}
-      <section className="section-padding bg-gradient-to-b from-white to-red-50">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -510,7 +550,7 @@ const Home = () => {
       </section>
 
       {/* Success Journey Timeline - Red Theme */}
-      <section className="section-padding bg-gradient-to-b from-red-50 to-white">
+      <section className="section-padding bg-slate-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -665,3 +705,5 @@ const AnimatedCounter = ({ value, suffix }) => {
 };
 
 export default Home;
+
+

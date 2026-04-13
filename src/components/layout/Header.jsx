@@ -131,7 +131,7 @@ const Header = () => {
     <>
       {/* Top Bar - Red Theme */}
       <motion.div 
-        className="bg-gradient-to-r from-red-600 to-red-700 text-white py-2 relative overflow-hidden"
+        className="bg-[#1a1a2e] text-white py-2 relative overflow-hidden"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
@@ -178,17 +178,17 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to="/free-consultation" className="hover:text-red-200 transition text-xs md:text-sm flex items-center space-x-1">
+              <Link to="/free-consultation" className="hover:text-white/70 transition text-xs md:text-sm flex items-center space-x-1">
                 <Target size={12} />
                 <span>Free Consultation</span>
               </Link>
             </motion.div>
-            <span className="hidden md:inline text-red-200">|</span>
+            <span className="hidden md:inline text-white/30">|</span>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to="/faq" className="hover:text-red-200 transition text-xs md:text-sm flex items-center space-x-1">
+              <Link to="/faq" className="hover:text-white/70 transition text-xs md:text-sm flex items-center space-x-1">
                 <Award size={12} />
                 <span>FAQ</span>
               </Link>
@@ -208,7 +208,7 @@ const Header = () => {
         ref={headerRef}
       >
         {/* Red gradient line at top */}
-        <div className="h-1 bg-gradient-to-r from-red-300 via-red-600 to-red-300" />
+        <div className="h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-500" />
         
         <nav className="container-custom">
           <div className="flex justify-between items-center h-16 md:h-20">
@@ -263,8 +263,8 @@ const Header = () => {
                       className={`flex items-center space-x-1 px-2 py-2 rounded-lg transition-all duration-300 ${
                         location.pathname === item.path || 
                         (item.dropdown && item.dropdown.some(d => d.path === location.pathname))
-                          ? 'text-red-600 bg-red-50 font-semibold'
-                          : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
+                          ? 'text-[#1a1a2e] bg-[#1a1a2e]/10 font-semibold'
+                          : 'text-gray-700 hover:text-[#1a1a2e] hover:bg-[#1a1a2e]/10'
                       }`}
                       aria-haspopup={item.dropdown ? 'menu' : undefined}
                       aria-expanded={item.dropdown ? activeDropdown === item.name : undefined}
@@ -297,11 +297,11 @@ const Header = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-xl py-2 border border-red-100 overflow-hidden"
+                          className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-xl py-2 border border-slate-200 overflow-hidden"
                           style={{ minWidth: '240px', zIndex: 60 }}
                         >
                           {/* Red gradient header */}
-                          <div className="h-1 bg-gradient-to-r from-red-300 via-red-500 to-red-300" />
+                          <div className="h-1 bg-gradient-to-r from-[#1a1a2e]/30 via-[#1a1a2e]/60 to-[#1a1a2e]/30" />
                           
                           {/* Dropdown items with roadmap connectors */}
                           {item.dropdown.map((subItem, index) => (
@@ -313,42 +313,42 @@ const Header = () => {
                             >
                               <Link
                                 to={subItem.path}
-                                className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition group relative"
+                                className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-[#1a1a2e]/5 hover:text-[#1a1a2e] transition group relative"
                                 onClick={() => setActiveDropdown(null)}
                               >
                                 {/* Roadmap connector line */}
                                 {index < item.dropdown.length - 1 && (
-                                  <div className="absolute left-6 top-10 w-0.5 h-6 bg-gradient-to-b from-red-200 to-transparent" />
+                                  <div className="absolute left-6 top-10 w-0.5 h-6 bg-gradient-to-b from-slate-200 to-transparent" />
                                 )}
                                 
-                                <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-lg group-hover:bg-red-100 transition flex-shrink-0">
+                                <div className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-lg group-hover:bg-slate-100 transition flex-shrink-0">
                                   {subItem.icon}
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <span className="text-sm font-medium block truncate">{subItem.name}</span>
                                   {/* Step indicator */}
                                   <div className="flex items-center space-x-1 mt-1">
-                                    <div className="w-1 h-1 rounded-full bg-red-400" />
-                                    <div className="w-2 h-0.5 bg-red-200" />
-                                    <div className="w-1 h-1 rounded-full bg-red-300" />
+                                    <div className="w-1 h-1 rounded-full bg-[#1a1a2e]/60" />
+                                    <div className="w-2 h-0.5 bg-[#1a1a2e]/30" />
+                                    <div className="w-1 h-1 rounded-full bg-[#1a1a2e]/50" />
                                   </div>
                                 </div>
                                 
                                 {/* Hover effect */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/5 to-red-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a2e]/0 via-[#1a1a2e]/5 to-[#1a1a2e]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                               </Link>
                             </motion.div>
                           ))}
                           
                           {/* Footer with call to action */}
-                          <div className="px-4 py-3 bg-gradient-to-r from-red-50 to-red-100/50 mt-2">
+                          <div className="px-4 py-3 bg-gradient-to-r from-slate-50 to-slate-100/50 mt-2">
                             <div className="flex items-center justify-between text-xs">
-                              <span className="text-red-600 font-medium">Need help?</span>
-                          <Link to="/contact" className="text-red-700 hover:text-red-800 font-semibold flex items-center space-x-1">
-                            <span>Contact us</span>
-                            <ChevronDown size={12} className="-rotate-90" />
-                          </Link>
-                        </div>
+                              <span className="text-[#1a1a2e] font-medium">Need help?</span>
+                              <Link to="/contact" className="text-[#1a1a2e] hover:text-[#111122] font-semibold flex items-center space-x-1">
+                                <span>Contact us</span>
+                                <ChevronDown size={12} className="-rotate-90" />
+                              </Link>
+                            </div>
                       </div>
                         </motion.div>
                       )}
@@ -379,7 +379,7 @@ const Header = () => {
             {/* Mobile menu button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition flex-shrink-0"
+              className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-[#1a1a2e]/10 hover:text-[#1a1a2e] transition flex-shrink-0"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-expanded={isMenuOpen}
@@ -398,7 +398,7 @@ const Header = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="lg:hidden bg-white border-t border-red-100 overflow-hidden"
+                className="lg:hidden bg-white border-t border-slate-200 overflow-hidden"
                 id="mobile-menu"
               >
                 <div className="py-4 space-y-1 max-h-[80vh] overflow-y-auto">
@@ -413,7 +413,7 @@ const Header = () => {
                         <div className="flex items-center justify-between px-4">
                           <Link
                             to={item.path}
-                            className="flex items-center space-x-3 py-3 text-gray-700 hover:text-red-600 transition flex-1"
+                            className="flex items-center space-x-3 py-3 text-gray-700 hover:text-[#1a1a2e] transition flex-1"
                             onClick={() => {
                               setIsMenuOpen(false);
                               setActiveDropdown(null);
@@ -432,11 +432,11 @@ const Header = () => {
                               onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                               animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
                               transition={{ duration: 0.3 }}
-                              className="p-2 hover:bg-red-50 rounded-lg"
+                              className="p-2 hover:bg-[#1a1a2e]/10 rounded-lg"
                               aria-label={`Toggle ${item.name} submenu`}
                               aria-expanded={activeDropdown === item.name}
                             >
-                              <ChevronDown size={16} className="text-red-600" />
+                              <ChevronDown size={16} className="text-[#1a1a2e]" />
                             </motion.button>
                           )}
                         </div>
@@ -461,7 +461,7 @@ const Header = () => {
                                   >
                                     <Link
                                       to={subItem.path}
-                                      className="flex items-center space-x-3 py-2 px-3 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition group relative"
+                                      className="flex items-center space-x-3 py-2 px-3 text-gray-600 hover:text-[#1a1a2e] hover:bg-[#1a1a2e]/5 rounded-lg transition group relative"
                                       onClick={() => {
                                         setIsMenuOpen(false);
                                         setActiveDropdown(null);
@@ -469,19 +469,19 @@ const Header = () => {
                                     >
                                       {/* Roadmap line */}
                                       {subIndex < item.dropdown.length - 1 && (
-                                        <div className="absolute left-4 top-6 w-0.5 h-6 bg-gradient-to-b from-red-200 to-transparent" />
+                                        <div className="absolute left-4 top-6 w-0.5 h-6 bg-gradient-to-b from-slate-200 to-transparent" />
                                       )}
                                       
-                                      <div className="w-6 h-6 bg-red-50 rounded flex items-center justify-center text-sm group-hover:bg-red-100 flex-shrink-0">
+                                      <div className="w-6 h-6 bg-slate-50 rounded flex items-center justify-center text-sm group-hover:bg-slate-100 flex-shrink-0">
                                         {subItem.icon}
                                       </div>
                                       <span className="text-sm flex-1">{subItem.name}</span>
                                       
                                       {/* Step indicator */}
                                       <div className="flex items-center space-x-1 flex-shrink-0">
-                                        <div className="w-1 h-1 rounded-full bg-red-300" />
-                                        <div className="w-2 h-0.5 bg-red-200" />
-                                        <div className="w-1 h-1 rounded-full bg-red-400" />
+                                        <div className="w-1 h-1 rounded-full bg-[#1a1a2e]/40" />
+                                        <div className="w-2 h-0.5 bg-[#1a1a2e]/30" />
+                                        <div className="w-1 h-1 rounded-full bg-[#1a1a2e]/60" />
                                       </div>
                                     </Link>
                                   </motion.div>
@@ -532,7 +532,7 @@ const Header = () => {
         
         {/* Bottom red line with mouse follow effect */}
         <motion.div 
-          className="h-0.5 bg-gradient-to-r from-red-300 via-red-600 to-red-300"
+          className="h-0.5 bg-gradient-to-r from-red-400 via-red-600 to-red-400"
           style={{
             background: 'radial-gradient(circle at var(--mouse-x, 50%) 0px, rgba(239, 68, 68, 0.5), transparent 50%)'
           }}

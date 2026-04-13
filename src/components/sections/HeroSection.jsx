@@ -45,20 +45,20 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white"
+      className="relative overflow-hidden bg-[#1a1a2e] text-white"
       style={{ '--mouse-x': '50%', '--mouse-y': '50%' }}
     >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         {/* Red gradient overlays */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-red-500/30 via-transparent to-transparent" />
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-red-400/30 via-transparent to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent" />
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
         
         {/* Floating particles */}
         {particles.map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full"
+            className="absolute w-2 h-2 bg-white/15 rounded-full"
             initial={{
               x: particle.x,
               y: particle.y,
@@ -83,7 +83,7 @@ const HeroSection = () => {
         <div 
           className="absolute inset-0 opacity-30"
           style={{
-            background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.3), transparent 50%)'
+            background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.18), transparent 50%)'
           }}
         />
       </div>
@@ -111,16 +111,16 @@ const HeroSection = () => {
           >
             {/* Trust badge with roadmap indicator */}
             <motion.div 
-              className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20"
+              className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/15"
               whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.15)' }}
             >
-              <Award size={16} className="text-red-300" />
+              <Award size={16} className="text-white/80" />
               <span className="text-sm font-medium">Trusted by 5,000+ Students Worldwide</span>
               <div className="flex items-center space-x-1 ml-2">
                 {[1,2,3].map((dot) => (
                   <motion.div
                     key={dot}
-                    className="w-1.5 h-1.5 bg-red-300 rounded-full"
+                    className="w-1.5 h-1.5 bg-white/50 rounded-full"
                     animate={{ scale: [1, 1.5, 1] }}
                     transition={{ duration: 1, delay: dot * 0.2, repeat: Infinity }}
                   />
@@ -129,11 +129,11 @@ const HeroSection = () => {
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Your <span className="text-red-300">Roadmap</span> to{' '}
+              Your <span className="text-red-400">Roadmap</span> to{' '}
               <span className="relative">
                 Global Education
                 <motion.div 
-                  className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-300 to-red-100"
+                  className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-300"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -141,7 +141,7 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-red-100 mb-8">
+            <p className="text-lg md:text-xl text-white/80 mb-8">
               Expert guidance for studying abroad in top universities across 50+ countries.
               From admission to visa, we handle everything with a 98% success rate.
             </p>
@@ -154,15 +154,15 @@ const HeroSection = () => {
                     <div className="flex flex-col items-center">
                       <motion.div 
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
-                          ${index === 0 ? 'bg-red-400 text-white' : 'bg-white/20 text-white'}`}
+                          ${index === 0 ? 'bg-red-500 text-white' : 'bg-white/15 text-white'}`}
                         whileHover={{ scale: 1.2 }}
                       >
                         {step.number}
                       </motion.div>
-                      <span className="text-xs mt-1 text-red-200">{step.title}</span>
+                      <span className="text-xs mt-1 text-white/70">{step.title}</span>
                     </div>
                     {index < roadmapSteps.length - 1 && (
-                      <div className="flex-1 h-0.5 mx-2 bg-gradient-to-r from-red-400 to-red-300" />
+                      <div className="flex-1 h-0.5 mx-2 bg-gradient-to-r from-red-500/80 to-red-400/50" />
                     )}
                   </div>
                 ))}
@@ -176,7 +176,7 @@ const HeroSection = () => {
               >
                 <Link 
                   to="/free-consultation" 
-                  className="btn-secondary text-lg px-8 py-4 text-center bg-white text-red-600 hover:bg-red-50 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
+                  className="btn-secondary text-lg px-8 py-4 text-center bg-red-600 text-white hover:bg-red-700 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
                 >
                   <Target size={20} />
                   <span>Start Your Journey</span>
@@ -189,7 +189,7 @@ const HeroSection = () => {
               >
                 <Link
                   to="/services"
-                  className="bg-white/10 hover:bg-white/20 text-white font-semibold py-4 px-8 rounded-lg transition flex items-center justify-center space-x-2 border border-white/20 backdrop-blur-sm"
+                  className="bg-white/5 hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-lg transition flex items-center justify-center space-x-2 border border-white/15 backdrop-blur-sm"
                 >
                   <PlayCircle size={20} />
                   <span>Watch Success Stories</span>
@@ -215,11 +215,11 @@ const HeroSection = () => {
                 >
                   <div className="text-2xl mb-1">{stat.icon}</div>
                   <div className="text-xl md:text-2xl font-bold mb-1">{stat.value}</div>
-                  <div className="text-red-200 text-xs">{stat.label}</div>
+                  <div className="text-white/70 text-xs">{stat.label}</div>
                   
                   {/* Roadmap dot */}
                   <motion.div 
-                    className="w-1 h-1 bg-red-300 rounded-full mx-auto mt-2"
+                    className="w-1 h-1 bg-red-400 rounded-full mx-auto mt-2"
                     animate={{ scale: [1, 1.5, 1] }}
                     transition={{ duration: 1, delay: index * 0.2, repeat: Infinity }}
                   />
@@ -242,7 +242,7 @@ const HeroSection = () => {
               </svg>
             </div>
             
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 text-gray-800 relative overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 text-gray-800 relative overflow-hidden">
               {/* Red gradient header */}
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-300 via-red-500 to-red-300" />
               
@@ -372,9 +372,9 @@ const HeroSection = () => {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <Users size={20} className="text-red-600" />
-                    <span className="text-sm text-gray-600">Expert consultation</span>
-                  </div>
+                  <Users size={20} className="text-red-600" />
+                  <span className="text-sm text-gray-600">Expert consultation</span>
+                </div>
                   
                   {/* Roadmap progress */}
                   <div className="flex items-center space-x-2">
@@ -446,7 +446,7 @@ const HeroSection = () => {
       {/* Wave divider */}
       <div className="absolute bottom-0 left-0 w-full">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,120 C240,100 480,60 720,60 C960,60 1200,100 1440,120 L1440,120 L0,120 Z" fill="white" fillOpacity="0.1" />
+          <path d="M0,120 C240,100 480,60 720,60 C960,60 1200,100 1440,120 L1440,120 L0,120 Z" fill="white" fillOpacity="0.08" />
         </svg>
       </div>
     </section>
@@ -454,3 +454,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+
