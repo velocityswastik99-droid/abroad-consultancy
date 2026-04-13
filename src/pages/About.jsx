@@ -60,11 +60,14 @@ const About = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <div className="bg-gradient-to-br from-primary-700 via-primary-600 to-secondary-700 text-white">
         <div className="container-custom py-16 md:py-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About GlobalEduConsult</h1>
-            <p className="text-xl text-gray-200">
+            <span className="inline-flex items-center rounded-full bg-white/15 px-4 py-1 text-sm font-semibold tracking-wide">
+              Since 2010
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-4">About GlobalEduConsult</h1>
+            <p className="text-xl text-white/90">
               For over a decade, we've been transforming dreams into global education realities. 
               Our expert team has guided 5000+ students to successful study abroad journeys.
             </p>
@@ -72,11 +75,12 @@ const About = () => {
         </div>
       </div>
 
-      <div className="container-custom py-16">
+      <div className="bg-slate-50">
+        <div className="container-custom py-16">
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {STATS.map((stat) => (
-            <div key={stat.label} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center">
+            <div key={stat.label} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-center transition hover:-translate-y-1 hover:shadow-lg">
               <stat.icon className="text-primary-600 mx-auto mb-3" size={28} />
               <div className="text-2xl font-bold mb-1">{stat.value}</div>
               <div className="text-sm text-gray-600">{stat.label}</div>
@@ -86,7 +90,7 @@ const About = () => {
 
         {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-100">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4">
                 <Target className="text-primary-600" size={24} />
@@ -107,7 +111,7 @@ const About = () => {
             </ul>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-100">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mr-4">
                 <Eye className="text-secondary-600" size={24} />
@@ -132,7 +136,7 @@ const About = () => {
         {/* Our Story */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Our Story</h2>
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-100">
             <div className="prose max-w-none">
               <p className="text-gray-600 mb-4">
                 Founded in 2010, GlobalEduConsult began with a simple vision: to make quality global education 
@@ -157,10 +161,18 @@ const About = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Our Journey</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {MILESTONES.map((milestone) => (
-              <div key={milestone.year} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                <div className="text-primary-600 font-bold text-lg mb-2">{milestone.year}</div>
-                <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
-                <p className="text-gray-600">{milestone.detail}</p>
+              <div key={milestone.year} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                <div className="flex items-start gap-4">
+                  <div className="flex flex-col items-center">
+                    <div className="w-3 h-3 rounded-full bg-primary-600 mt-1"></div>
+                    <div className="w-px flex-1 bg-slate-200 mt-2"></div>
+                  </div>
+                  <div>
+                    <div className="text-primary-600 font-bold text-lg mb-1">{milestone.year}</div>
+                    <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
+                    <p className="text-gray-600">{milestone.detail}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -171,7 +183,7 @@ const About = () => {
           <h2 className="text-3xl font-bold mb-12 text-center">Meet Our Expert Team</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {TEAM_MEMBERS.map((member) => (
-              <div key={member.name} className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
+              <div key={member.name} className="bg-white rounded-2xl shadow-sm p-6 text-center border border-slate-100 transition hover:-translate-y-1 hover:shadow-lg">
                 <div className="w-24 h-24 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">
                   {member.name.split(' ').map((n) => n[0]).join('')}
                 </div>
@@ -191,7 +203,7 @@ const About = () => {
           <h2 className="text-3xl font-bold mb-12 text-center">Our Core Values</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {VALUES.map((value) => (
-              <div key={value.title} className="bg-white rounded-xl p-6 text-center border border-gray-200">
+              <div key={value.title} className="bg-white rounded-2xl p-6 text-center border border-slate-100 shadow-sm transition hover:shadow-md">
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${value.color}`}>
                   <value.icon size={24} />
                 </div>
@@ -201,6 +213,7 @@ const About = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </>
   );
