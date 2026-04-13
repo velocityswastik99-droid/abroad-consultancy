@@ -167,6 +167,46 @@ const Home = () => {
       country: 'Canada',
       quote: 'From university selection to accommodation, they handled everything perfectly. Now I\'m pursuing my Master\'s in Canada.',
       rating: 5
+    },
+    {
+      id: 4,
+      name: 'Sneha Iyer',
+      university: 'University of Melbourne',
+      country: 'Australia',
+      quote: 'Their SOP guidance and university shortlisting were spot on. I received admits from two top Australian universities.',
+      rating: 5
+    },
+    {
+      id: 5,
+      name: 'Arjun Mehta',
+      university: 'TU Munich',
+      country: 'Germany',
+      quote: 'The team helped me build a strong profile and manage the entire application timeline. The process felt stress-free.',
+      rating: 5
+    },
+    {
+      id: 6,
+      name: 'Neha Reddy',
+      university: 'University of British Columbia',
+      country: 'Canada',
+      quote: 'From test prep to visa filing, every step was organized and transparent. I always knew what to do next.',
+      rating: 5
+    },
+    {
+      id: 7,
+      name: 'Karan Verma',
+      university: 'University of Manchester',
+      country: 'UK',
+      quote: 'They simplified the documentation and interview prep. I got my visa approval on the first attempt.',
+      rating: 5
+    },
+    {
+      id: 8,
+      name: 'Ananya Gupta',
+      university: 'Arizona State University',
+      country: 'USA',
+      quote: 'Regular follow-ups and honest feedback made a big difference. I secured a partial scholarship and a fast admit.',
+      rating: 5
     }
   ];
 
@@ -289,7 +329,7 @@ const Home = () => {
           </motion.div>
           
           <RoadmapPath 
-            items={['Discovery Call', 'Profile Assessment', 'University Selection', 'Application', 'Visa Process', 'Arrival']}
+            items={['Discovery Call', 'Profile Assessment', 'University Selection', 'Application', 'Visa Process', 'Arrival', 'Part-Time Guidance', 'Full-Time Guidance']}
             className="mb-16"
           />
           
@@ -665,3 +705,5 @@ const AnimatedCounter = ({ value, suffix }) => {
 };
 
 export default Home;
+
+

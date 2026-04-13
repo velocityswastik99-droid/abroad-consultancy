@@ -2,6 +2,8 @@ import TestimonialCard from '../common/TestimonialCard.jsx';
 import { testimonials as defaultTestimonials } from '../../data/testimonials.js';
 
 function TestimonialsSection({ testimonials = defaultTestimonials }) {
+  const marqueeItems = [...testimonials, ...testimonials];
+
   return (
     <section className="section-padding bg-white">
       <div className="container-custom px-4">
@@ -13,10 +15,21 @@ function TestimonialsSection({ testimonials = defaultTestimonials }) {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((item) => (
-            <TestimonialCard key={item.id} testimonial={item} />
-          ))}
+        <div className="relative overflow-hidden">
+          <div className="testimonials-marquee flex w-max gap-6">
+            {marqueeItems.map((item, index) => {
+              const isDuplicate = index >= testimonials.length;
+              return (
+                <div
+                  key={`${item.id}-${index}`}
+                  className="flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]"
+                  aria-hidden={isDuplicate}
+                >
+                  <TestimonialCard testimonial={item} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

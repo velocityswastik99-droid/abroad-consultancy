@@ -323,6 +323,15 @@
     }
   }
 
+  @keyframes testimonials-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   /* Animation Classes */
   .animate-slide-up {
     animation: slideUp 0.3s ease-out;
@@ -347,6 +356,10 @@
   .animate-topbar-orb {
     animation: topbar-orb var(--orb-duration, 24s) linear infinite;
     animation-delay: var(--orb-delay, 0s);
+  }
+
+  .testimonials-marquee {
+    animation: testimonials-marquee var(--marquee-duration, 45s) linear infinite;
   }
 
   /* Animation Delays */
@@ -427,4 +440,16 @@
     linear-gradient(to right, var(--color-primary-100) 1px, transparent 1px),
     linear-gradient(to bottom, var(--color-primary-100) 1px, transparent 1px);
   background-size: 30px 30px;
+}
+
+.testimonials-marquee:hover,
+.testimonials-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-marquee {
+    animation: none;
+    transform: translateX(0);
+  }
 }
