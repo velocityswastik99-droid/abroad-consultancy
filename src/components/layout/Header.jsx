@@ -115,11 +115,11 @@ const Header = () => {
       {steps.map((step, index) => (
         <div key={index} className="flex items-center">
           <div className={`w-1.5 h-1.5 rounded-full ${
-            index <= currentStep ? 'bg-red-500' : 'bg-gray-300'
+            index <= currentStep ? 'bg-primary-600' : 'bg-gray-300'
           }`} />
           {index < steps.length - 1 && (
             <div className={`w-3 h-0.5 ${
-              index < currentStep ? 'bg-red-300' : 'bg-gray-200'
+              index < currentStep ? 'bg-primary-300' : 'bg-gray-200'
             }`} />
           )}
         </div>
@@ -218,26 +218,19 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
               className="flex-shrink-0"
             >
-              <Link to="/" className="flex items-center space-x-2 md:space-x-3 group">
+              <Link to="/" className="flex items-center space-x-2 md:space-x-3">
                 <motion.div 
-                  className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center shadow-lg relative overflow-hidden"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
+                  className="h-14 md:h-16 w-auto flex items-center justify-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {/* Animated shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                  <span className="text-white font-bold text-lg md:text-xl">GEC</span>
+                  <img 
+                    src="/images/logo.svg" 
+                    alt="FuturePath Careers Logo" 
+                    className="h-full object-contain drop-shadow-sm hover:drop-shadow-md transition-all"
+                    loading="eager"
+                  />
                 </motion.div>
-                <div>
-                  <h1 className="text-xl md:text-2xl font-bold leading-tight">
-                    <span className="text-red-600">GlobalEdu</span>
-                    <span className="text-gray-800">Consult</span>
-                  </h1>
-                  <p className="text-xs text-gray-500 hidden md:flex items-center space-x-1">
-                    <MapPin size={10} className="text-red-400" />
-                    <span>Study Abroad Experts</span>
-                  </p>
-                </div>
               </Link>
             </motion.div>
 
@@ -502,7 +495,7 @@ const Header = () => {
                   >
                     <Link
                       to="/free-consultation"
-                      className="block w-full btn-secondary text-center bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 shadow-lg py-3 rounded-lg font-semibold"
+                      className="block w-full btn-secondary text-center bg-gradient-to-r from-secondary-600 to-secondary-700 text-white hover:from-secondary-700 hover:to-secondary-800 shadow-lg py-3 rounded-lg font-semibold"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Apply Now
@@ -511,15 +504,15 @@ const Header = () => {
                     {/* Mobile roadmap footer */}
                     <div className="mt-4 flex items-center justify-center space-x-4 text-xs text-gray-500">
                       <div className="flex items-center space-x-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary-400" />
                         <span>Explore</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-secondary-500" />
                         <span>Apply</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary-600" />
                         <span>Succeed</span>
                       </div>
                     </div>

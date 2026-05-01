@@ -129,11 +129,11 @@ const HeroSection = () => {
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Your <span className="text-red-400">Roadmap</span> to{' '}
+              Your <span className="text-accent-400">Roadmap</span> to{' '}
               <span className="relative">
                 Global Education
                 <motion.div 
-                  className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-300"
+                  className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-secondary-500"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -154,7 +154,7 @@ const HeroSection = () => {
                     <div className="flex flex-col items-center">
                       <motion.div 
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
-                          ${index === 0 ? 'bg-red-500 text-white' : 'bg-white/15 text-white'}`}
+                        ${index === 0 ? 'bg-primary-600 text-white' : 'bg-white/15 text-white'}`}
                         whileHover={{ scale: 1.2 }}
                       >
                         {step.number}
@@ -162,7 +162,7 @@ const HeroSection = () => {
                       <span className="text-xs mt-1 text-white/70">{step.title}</span>
                     </div>
                     {index < roadmapSteps.length - 1 && (
-                      <div className="flex-1 h-0.5 mx-2 bg-gradient-to-r from-red-500/80 to-red-400/50" />
+                      <div className="flex-1 h-0.5 mx-2 bg-gradient-to-r from-secondary-600/80 to-secondary-400/50" />
                     )}
                   </div>
                 ))}
@@ -176,7 +176,7 @@ const HeroSection = () => {
               >
                 <Link 
                   to="/free-consultation" 
-                  className="btn-secondary text-lg px-8 py-4 text-center bg-red-600 text-white hover:bg-red-700 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
+                  className="btn-secondary text-lg px-8 py-4 text-center bg-secondary-600 text-white hover:bg-secondary-700 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
                 >
                   <Target size={20} />
                   <span>Start Your Journey</span>
@@ -219,7 +219,7 @@ const HeroSection = () => {
                   
                   {/* Roadmap dot */}
                   <motion.div 
-                    className="w-1 h-1 bg-red-400 rounded-full mx-auto mt-2"
+                    className="w-1 h-1 bg-secondary-400 rounded-full mx-auto mt-2"
                     animate={{ scale: [1, 1.5, 1] }}
                     transition={{ duration: 1, delay: index * 0.2, repeat: Infinity }}
                   />
@@ -237,19 +237,19 @@ const HeroSection = () => {
           >
             {/* Decorative roadmap lines */}
             <div className="absolute -top-4 -right-4 w-24 h-24">
-              <svg viewBox="0 0 100 100" className="w-full h-full text-red-300/30">
+              <svg viewBox="0 0 100 100" className="w-full h-full text-primary-300/30">
                 <path d="M10,90 Q50,10 90,50" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="5 5" />
               </svg>
             </div>
             
             <div className="bg-white rounded-2xl shadow-2xl p-8 text-gray-800 relative overflow-hidden">
-              {/* Red gradient header */}
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-300 via-red-500 to-red-300" />
+              {/* Primary gradient header */}
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-300 via-secondary-500 to-primary-300" />
               
               {/* Form header with roadmap */}
               <div className="text-center mb-8 relative">
                 <motion.div 
-                  className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-full mb-4 shadow-lg relative overflow-hidden group"
+                  className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-600 to-secondary-500 rounded-full mb-4 shadow-lg relative overflow-hidden group"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -257,14 +257,14 @@ const HeroSection = () => {
                   <Globe size={32} className="text-white" />
                 </motion.div>
                 
-                <h3 className="text-2xl font-bold mb-2">Start Your <span className="text-red-600">Roadmap</span></h3>
+                <h3 className="text-2xl font-bold mb-2">Start Your <span className="text-primary-600">Roadmap</span></h3>
                 <p className="text-gray-600">Free consultation with our experts</p>
                 
                 {/* Step indicators */}
                 <div className="flex items-center justify-center space-x-2 mt-4">
                   {[1,2,3,4].map((step) => (
                     <div key={step} className="flex items-center">
-                      <div className={`w-2 h-2 rounded-full ${step === 1 ? 'bg-red-500' : 'bg-gray-300'}`} />
+                      <div className={`w-2 h-2 rounded-full ${step === 1 ? 'bg-primary-600' : 'bg-gray-300'}`} />
                       {step < 4 && <div className="w-4 h-0.5 bg-gray-300" />}
                     </div>
                   ))}
@@ -372,17 +372,17 @@ const HeroSection = () => {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                  <Users size={20} className="text-red-600" />
+                  <Users size={20} className="text-primary-600" />
                   <span className="text-sm text-gray-600">Expert consultation</span>
                 </div>
                   
                   {/* Roadmap progress */}
                   <div className="flex items-center space-x-2">
-                    <CheckCircle size={16} className="text-red-500" />
+                    <CheckCircle size={16} className="text-secondary-500" />
                     <span className="text-xs text-gray-500">Step 1 of 4</span>
                     <div className="w-16 h-1 bg-gray-200 rounded-full overflow-hidden">
                       <motion.div 
-                        className="h-full bg-gradient-to-r from-red-500 to-red-600"
+                        className="h-full bg-gradient-to-r from-secondary-500 to-secondary-600"
                         initial={{ width: '0%' }}
                         animate={{ width: '25%' }}
                         transition={{ duration: 1, delay: 1 }}
@@ -401,7 +401,7 @@ const HeroSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 + index * 0.1 }}
                     >
-                      <div className="w-1.5 h-1.5 bg-red-400 rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary-400 rounded-full" />
                       <span className="text-xs text-gray-500">{badge}</span>
                     </motion.div>
                   ))}
@@ -411,7 +411,7 @@ const HeroSection = () => {
 
             {/* Floating roadmap element */}
             <motion.div 
-              className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-red-400 to-red-500 rounded-full opacity-20"
+              className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full opacity-20"
               animate={{
                 scale: [1, 1.2, 1],
                 rotate: [0, 90, 0]

@@ -63,7 +63,7 @@ const Universities = () => {
                     <span className="text-sm">Location: {uni.country}</span>
                     <span className="mx-2">-</span>
                     <div className="flex items-center">
-                      <Star size={14} className="text-yellow-500 mr-1" />
+                      <Star size={14} className="text-secondary-500 mr-1" />
                       <span className="text-sm font-semibold">{uni.ranking}</span>
                     </div>
                   </div>
@@ -114,7 +114,7 @@ const Universities = () => {
               <ul className="space-y-2">
                 {['Best-fit university identification', 'Course matching analysis', 'Admission requirements review', 'Success probability assessment'].map((item) => (
                   <li key={item} className="flex items-center text-sm text-gray-600">
-                    <CheckCircle size={16} className="text-green-500 mr-2 flex-shrink-0" />
+                    <CheckCircle size={16} className="text-secondary-500 mr-2 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -122,14 +122,14 @@ const Universities = () => {
             </div>
 
             <div className="bg-white rounded-xl p-6">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <BookOpen className="text-green-600" size={24} />
+              <div className="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mb-4">
+                <BookOpen className="text-secondary-600" size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3">Application Documentation</h3>
               <ul className="space-y-2">
                 {['SOP/LOR preparation', 'Resume building', 'Transcript evaluation', 'Portfolio development'].map((item) => (
                   <li key={item} className="flex items-center text-sm text-gray-600">
-                    <CheckCircle size={16} className="text-green-500 mr-2 flex-shrink-0" />
+                    <CheckCircle size={16} className="text-secondary-500 mr-2 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -137,14 +137,14 @@ const Universities = () => {
             </div>
 
             <div className="bg-white rounded-xl p-6">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Users className="text-purple-600" size={24} />
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="text-accent-600" size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3">Interview Preparation</h3>
               <ul className="space-y-2">
                 {['Mock interview sessions', 'Common questions preparation', 'Communication skills training', 'Confidence building'].map((item) => (
                   <li key={item} className="flex items-center text-sm text-gray-600">
-                    <CheckCircle size={16} className="text-green-500 mr-2 flex-shrink-0" />
+                    <CheckCircle size={16} className="text-secondary-500 mr-2 flex-shrink-0" />
                     {item}
                   </li>
                 ))}

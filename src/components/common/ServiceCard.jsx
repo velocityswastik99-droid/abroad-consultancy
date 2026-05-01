@@ -21,7 +21,7 @@ const ServiceCard = ({ service }) => {
         <ul className="space-y-2">
           {service.features.slice(0, 3).map((feature, index) => (
             <li key={index} className="flex items-start">
-              <CheckCircle size={16} className="text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+              <CheckCircle size={16} className="text-secondary-500 mt-0.5 mr-2 flex-shrink-0" />
               <span className="text-sm text-gray-600">{feature}</span>
             </li>
           ))}
@@ -40,7 +40,7 @@ const ServiceCard = ({ service }) => {
         </Link>
         <Link 
           to="/free-consultation"
-          className="text-sm font-semibold bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-lg transition"
+          className="text-sm font-semibold bg-secondary-600 text-white hover:bg-secondary-700 px-4 py-2 rounded-lg transition"
         >
           Enquire Now
         </Link>

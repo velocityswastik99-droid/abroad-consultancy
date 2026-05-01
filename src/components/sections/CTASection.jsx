@@ -6,7 +6,7 @@ function CTASection() {
         <p className="text-lg md:text-xl mb-8 text-white/80">
           Book a free consultation with our experts and get a personalized roadmap for your study abroad journey.
         </p>
-        <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition">
+        <button className="bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-6 py-3 rounded-lg transition">
           Book Free Consultation
         </button>
       </div>

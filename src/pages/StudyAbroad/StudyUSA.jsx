@@ -85,7 +85,7 @@ const StudyUSA = () => {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
               <h2 className="text-2xl font-bold mb-6 flex items-center">
-                <CheckCircle className="text-green-500 mr-3" size={24} />
+                <CheckCircle className="text-secondary-500 mr-3" size={24} />
                 Admission Requirements
               </h2>
               
@@ -119,7 +119,7 @@ const StudyUSA = () => {
                       'Passport copy'
                     ].map((doc, index) => (
                       <div key={index} className="flex items-center bg-gray-50 p-3 rounded-lg">
-                        <CheckCircle size={16} className="text-green-500 mr-3" />
+                        <CheckCircle size={16} className="text-secondary-500 mr-3" />
                         <span>{doc}</span>
                       </div>
                     ))}
