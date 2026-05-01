@@ -13,25 +13,25 @@ const VALUES = [
     title: 'Student-Centric',
     description: 'Your success is our priority',
     icon: Users,
-    color: 'bg-blue-100 text-blue-600',
+    color: 'bg-primary-100 text-primary-600',
   },
   {
     title: 'Integrity',
     description: 'Honest and transparent processes',
     icon: CheckCircle,
-    color: 'bg-green-100 text-green-600',
+    color: 'bg-secondary-100 text-secondary-600',
   },
   {
     title: 'Excellence',
     description: 'Commitment to quality service',
     icon: Award,
-    color: 'bg-purple-100 text-purple-600',
+    color: 'bg-accent-100 text-accent-600',
   },
   {
     title: 'Innovation',
     description: 'Adapting to changing education trends',
     icon: Target,
-    color: 'bg-orange-100 text-orange-600',
+    color: 'bg-secondary-100 text-secondary-600',
   },
 ];
 
@@ -104,7 +104,7 @@ const About = () => {
             <ul className="space-y-2">
               {['Quality Education Access', 'Personalized Guidance', 'Transparent Processes', 'Student Success Focus'].map((item) => (
                 <li key={item} className="flex items-center">
-                  <CheckCircle size={16} className="text-green-500 mr-2" />
+                  <CheckCircle size={16} className="text-secondary-500 mr-2" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -125,7 +125,7 @@ const About = () => {
             <ul className="space-y-2">
               {['Global Recognition', 'Trusted Partnership', 'Excellence in Service', 'Career Development Focus'].map((item) => (
                 <li key={item} className="flex items-center">
-                  <CheckCircle size={16} className="text-green-500 mr-2" />
+                  <CheckCircle size={16} className="text-secondary-500 mr-2" />
                   <span>{item}</span>
                 </li>
               ))}

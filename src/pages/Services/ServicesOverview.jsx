@@ -81,7 +81,7 @@ const ServicesOverview = () => {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <CheckCircle className="text-green-600" size={24} />
+                <CheckCircle className="text-secondary-600" size={24} />
               </div>
               <h3 className="font-bold mb-2">98% Success Rate</h3>
               <p className="text-gray-600 text-sm">High admission and visa success</p>
@@ -95,7 +95,7 @@ const ServicesOverview = () => {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Award className="text-yellow-600" size={24} />
+                <Award className="text-secondary-600" size={24} />
               </div>
               <h3 className="font-bold mb-2">INR 10 Cr+ Scholarships</h3>
               <p className="text-gray-600 text-sm">Helped secure financial aid</p>
@@ -108,7 +108,7 @@ const ServicesOverview = () => {
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Book a free consultation with our experts and get a personalized roadmap for your study abroad journey.
           </p>
-          <Link to="/free-consultation" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition inline-flex items-center justify-center">
+          <Link to="/free-consultation" className="bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-8 py-4 rounded-lg transition inline-flex items-center justify-center">
             Book Free Consultation
           </Link>
         </div>

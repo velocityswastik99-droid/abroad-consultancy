@@ -216,7 +216,7 @@ const Home = () => {
       {floatingParticles.map((particle, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-red-500/20 rounded-full"
+          className="absolute w-2 h-2 bg-primary-600/20 rounded-full"
           initial={{
             x: particle.x,
             y: particle.y,
@@ -242,7 +242,7 @@ const Home = () => {
   // Roadmap path component
   const RoadmapPath = ({ items, className = "" }) => (
     <div className={`relative ${className}`}>
-      <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-red-300 via-red-500 to-red-300 transform -translate-y-1/2" />
+      <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary-300 via-secondary-500 to-primary-300 transform -translate-y-1/2" />
       <div className="relative flex justify-between">
         {items.map((item, index) => (
           <motion.div
@@ -255,7 +255,7 @@ const Home = () => {
           >
             <motion.div
               whileHover={{ scale: 1.2 }}
-              className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg z-10"
+              className="w-10 h-10 bg-gradient-to-br from-primary-600 to-secondary-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg z-10"
             >
               {index + 1}
             </motion.div>
@@ -321,7 +321,7 @@ const Home = () => {
               Your Journey Starts Here
             </motion.div>
             <h2 className="section-title">
-              Your <span className="text-red-600">Roadmap</span> to Success
+              Your <span className="text-primary-600">Roadmap</span> to Success
             </h2>
             <p className="section-subtitle">
               Follow our proven path to achieve your study abroad dreams
@@ -492,7 +492,7 @@ const Home = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Your Global <span className="text-red-600">Roadmap</span>
+              Your Global <span className="text-secondary-600">Roadmap</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Choose your destination and follow our proven path to success
@@ -515,7 +515,7 @@ const Home = () => {
                   className="relative"
                 >
                   <motion.div
-                    className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-500 rounded-full border-4 border-white shadow-lg hidden md:flex items-center justify-center text-white text-xs font-bold"
+                    className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full border-4 border-white shadow-lg hidden md:flex items-center justify-center text-white text-xs font-bold"
                     whileHover={{ scale: 1.2 }}
                   >
                     {index + 1}
@@ -531,8 +531,8 @@ const Home = () => {
                       {['Apply', 'Visa', 'Fly'].map((step, stepIndex) => (
                         <div key={stepIndex} className="flex items-center text-xs">
                           <div className={`w-2 h-2 rounded-full ${
-                            stepIndex === 0 ? 'bg-red-300' :
-                            stepIndex === 1 ? 'bg-red-500' : 'bg-red-700'
+                            stepIndex === 0 ? 'bg-primary-300' :
+                            stepIndex === 1 ? 'bg-secondary-500' : 'bg-primary-700'
                           } mr-2`} />
                           <span className="text-gray-600">{step}</span>
                           {stepIndex < 2 && (
@@ -559,7 +559,7 @@ const Home = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our <span className="text-red-600">Success</span> Roadmap
+              Our <span className="text-secondary-600">Success</span> Roadmap
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Milestones that shaped our journey of excellence
@@ -604,7 +604,7 @@ const Home = () => {
                     <div className="flex items-center space-x-4 mb-3">
                       <div className="text-3xl">{item.icon}</div>
                       <div>
-                        <span className="text-red-600 font-bold">{item.year}</span>
+                        <span className="text-primary-600 font-bold">{item.year}</span>
                         <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
                       </div>
                     </div>
@@ -661,7 +661,7 @@ const Home = () => {
           </div>
           
           {/* Roadmap trail effect */}
-          <div className="absolute -bottom-2 -right-2 w-full h-full bg-red-400/30 rounded-2xl -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
+          <div className="absolute -bottom-2 -right-2 w-full h-full bg-primary-400/30 rounded-2xl -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
         </motion.div>
       </motion.div>
 

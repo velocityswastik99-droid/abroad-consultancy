@@ -33,7 +33,7 @@ const CountryCard = ({ country }) => {
         
         <Link 
           to={`/study-${country.slug}`}
-          className="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg text-center transition"
+          className="block w-full bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-6 py-3 rounded-lg text-center transition"
         >
           Explore {country.name}
         </Link>
