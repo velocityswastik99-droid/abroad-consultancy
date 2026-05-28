@@ -220,14 +220,14 @@ const Header = () => {
             >
               <Link to="/" className="flex items-center space-x-2 md:space-x-3">
                 <motion.div 
-                  className="h-14 md:h-16 w-auto flex items-center justify-center"
+                  className="h-16 md:h-20 w-auto flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
                   <img 
                     src="/images/logo.svg" 
                     alt="FuturePath Careers Logo" 
-                    className="h-full object-contain drop-shadow-sm hover:drop-shadow-md transition-all"
+                    className="h-full w-auto max-h-full object-contain drop-shadow-sm hover:drop-shadow-md transition-all"
                     loading="eager"
                   />
                 </motion.div>
