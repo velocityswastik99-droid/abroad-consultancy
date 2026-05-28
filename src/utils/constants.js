@@ -2,8 +2,8 @@ export const COMPANY_INFO = {
   name: 'GlobalEduConsult',
   tagline: 'Study Abroad Experts',
   email: 'info@globaleduconsult.com',
-  phone: '+1 (555) 123-4567',
-  address: '123 Education Street, Knowledge City, Global 10001',
+  phone: '7777987757',
+  address: 'Flat 503, Vaishnavi Signature Apartments, Vijayawada 520007',
   workingHours: 'Mon-Fri: 9AM-7PM, Sat: 10AM-4PM'
 };
 
