@@ -108,7 +108,7 @@ const ServicesOverview = () => {
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Book a free consultation with our experts and get a personalized roadmap for your study abroad journey.
           </p>
-          <Link to="/free-consultation" className="bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-8 py-4 rounded-lg transition inline-flex items-center justify-center">
+          <Link to="/contact" className="bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-8 py-4 rounded-lg transition inline-flex items-center justify-center">
             Book Free Consultation
           </Link>
         </div>

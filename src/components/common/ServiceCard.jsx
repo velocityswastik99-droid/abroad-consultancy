@@ -39,7 +39,7 @@ const ServiceCard = ({ service }) => {
           </svg>
         </Link>
         <Link 
-          to="/free-consultation"
+          to="/contact"
           className="text-sm font-semibold bg-secondary-600 text-white hover:bg-secondary-700 px-4 py-2 rounded-lg transition"
         >
           Enquire Now

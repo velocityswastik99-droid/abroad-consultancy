@@ -1,48 +1,24 @@
-import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { COMPANY_INFO, SOCIAL_LINKS } from '../../utils/constants';
 
 const Footer = () => {
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Study in USA', path: '/study-usa' },
-    { name: 'Study in UK', path: '/study-uk' },
-    { name: 'Study in Canada', path: '/study-canada' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' },
-  ];
+  const supportLinks = ['FAQ', 'Free Consultation', 'Document Checklist'];
 
-  const servicesLinks = [
-    { name: 'University Admissions', path: '/services/universities' },
-    { name: 'Courses & Programs', path: '/services/courses-programs' },
-    { name: 'Visa Assistance', path: '/services/visa-assistance' },
-    { name: 'Test Preparation', path: '/services/test-preparation' },
-    { name: 'Success Stories', path: '/services/success-stories' },
-  ];
-
-  const supportLinks = [
-    { name: 'FAQ', path: '/faq' },
-    { name: 'Scholarship Guide', path: '/scholarship-guide' },
-    { name: 'Free Consultation', path: '/free-consultation' },
-    { name: 'Document Checklist', path: '/document-checklist' },
-  ];
-
-  const legalLinks = [
-    { name: 'Privacy Policy', path: '/privacy-policy' },
-    { name: 'Terms & Conditions', path: '/terms-conditions' },
-  ];
+  const legalLinks = ['Privacy Policy', 'Terms & Conditions'];
 
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container-custom py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-2xl">GEC</span>
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-transparent p-2">
+                <img 
+                  src="/images/logo.svg" 
+                  alt="GlobalEduConsult Logo" 
+                  className="h-full w-full object-contain"
+                />
               </div>
               <div>
                 <h2 className="text-2xl font-bold">
@@ -71,36 +47,6 @@ const Footer = () => {
                 <Youtube size={20} />
               </a>
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-6 text-white">Quick Links</h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link to={link.path} className="text-gray-400 hover:text-white transition flex items-center">
-                    <span className="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-bold mb-6 text-white">Our Services</h3>
-            <ul className="space-y-3">
-              {servicesLinks.map((link) => (
-                <li key={link.name}>
-                  <Link to={link.path} className="text-gray-400 hover:text-white transition flex items-center">
-                    <span className="w-2 h-2 bg-secondary-500 rounded-full mr-3"></span>
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Contact Info */}
@@ -151,14 +97,14 @@ const Footer = () => {
             </p>
             <div className="flex space-x-6">
               {supportLinks.map((link) => (
-                <Link key={link.name} to={link.path} className="text-gray-400 hover:text-white text-sm transition">
-                  {link.name}
-                </Link>
+                <span key={link} className="text-gray-400 text-sm">
+                  {link}
+                </span>
               ))}
               {legalLinks.map((link) => (
-                <Link key={link.name} to={link.path} className="text-gray-400 hover:text-white text-sm transition">
-                  {link.name}
-                </Link>
+                <span key={link} className="text-gray-400 text-sm">
+                  {link}
+                </span>
               ))}
             </div>
           </div>

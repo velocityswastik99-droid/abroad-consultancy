@@ -96,7 +96,7 @@ const BlogPost = () => {
                   Talk to our counselors and get a custom study abroad plan.
                 </p>
                 <Link
-                  to="/free-consultation"
+                  to="/contact"
                   className="inline-flex items-center justify-center w-full bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-4 py-3 rounded-lg transition"
                 >
                   Book Free Consultation

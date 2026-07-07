@@ -24,7 +24,6 @@ import StudyGermany from './pages/StudyAbroad/StudyGermany';
 
 // Import Support Pages
 import FAQ from './pages/Support/FAQ';
-import ScholarshipGuide from './pages/Support/ScholarshipGuide';
 import FreeConsultation from './pages/Support/FreeConsultation';
 import DocumentChecklist from './pages/Support/DocumentChecklist';
 
@@ -72,7 +71,6 @@ function App() {
         
         {/* Support Routes */}
         <Route path="/faq" element={<Layout><FAQ /></Layout>} />
-        <Route path="/scholarship-guide" element={<Layout><ScholarshipGuide /></Layout>} />
         <Route path="/free-consultation" element={<Layout><FreeConsultation /></Layout>} />
         <Route path="/document-checklist" element={<Layout><DocumentChecklist /></Layout>} />
         

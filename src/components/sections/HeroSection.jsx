@@ -175,7 +175,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link 
-                  to="/free-consultation" 
+                  to="/contact" 
                   className="btn-secondary text-lg px-8 py-4 text-center bg-secondary-600 text-white hover:bg-secondary-700 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
                 >
                   <Target size={20} />

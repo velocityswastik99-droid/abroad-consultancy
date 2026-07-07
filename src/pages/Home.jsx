@@ -350,11 +350,11 @@ const Home = () => {
                 steps: ['1-on-1 Counseling', 'Custom Strategy', 'Ongoing Support']
               },
               {
-                icon: '💰',
-                title: 'Scholarship Success',
-                description: 'Helped students secure over ₹10 Crores in scholarships and financial aid',
+                icon: '�️',
+                title: 'Dedicated Support',
+                description: 'End-to-end guidance for applications, documents, visas, and pre-departure planning',
                 delay: 0.3,
-                steps: ['Eligibility Check', 'Application', '₹10Cr+ Secured']
+                steps: ['Application Help', 'Visa Support', 'Pre-Departure Guidance']
               }
             ].map((feature, index) => (
               <motion.div
@@ -453,7 +453,7 @@ const Home = () => {
               { value: 5000, suffix: '+', label: 'Students Placed', icon: '🎓' },
               { value: 98, suffix: '%', label: 'Visa Success Rate', icon: '✅' },
               { value: 50, suffix: '+', label: 'Countries', icon: '🌍' },
-              { value: 1000, suffix: 'Cr+', label: 'Scholarships', icon: '💰' }
+              { value: 1000, suffix: 'Cr+', label: 'Support', icon: '💰' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
