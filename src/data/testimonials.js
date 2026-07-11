@@ -5,7 +5,7 @@ export const testimonials = [
     university: 'Stanford University',
     country: 'USA',
     image: '/images/testimonials/student1.jpg',
-    quote: 'GlobalEduConsult helped me secure admission to my dream university with a 50% scholarship. Their guidance was invaluable throughout the process.',
+    quote: 'Future path career helped me secure admission to my dream university with a 50% scholarship. Their guidance was invaluable throughout the process.',
     rating: 5
   },
   {

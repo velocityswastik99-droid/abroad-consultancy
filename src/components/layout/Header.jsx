@@ -226,7 +226,7 @@ const Header = () => {
                 >
                   <img 
                     src="/images/logo.svg" 
-                    alt="GlobalEduConsult Logo" 
+                    alt="Future path career Logo" 
                     className="h-full w-auto max-h-full object-contain transition-all"
                     loading="eager"
                   />

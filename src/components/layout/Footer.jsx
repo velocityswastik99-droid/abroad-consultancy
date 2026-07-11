@@ -16,13 +16,13 @@ const Footer = () => {
               <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-transparent p-2">
                 <img 
                   src="/images/logo.svg" 
-                  alt="GlobalEduConsult Logo" 
+                  alt="Future path career Logo" 
                   className="h-full w-full object-contain"
                 />
               </div>
               <div>
                 <h2 className="text-2xl font-bold">
-                  GlobalEdu<span className="text-secondary-500">Consult</span>
+                  Future path career
                 </h2>
                 <p className="text-gray-400 text-sm">Study Abroad Experts</p>
               </div>
@@ -91,20 +91,16 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              Copyright {new Date().getFullYear()} GlobalEduConsult. All rights reserved.
+          <div className="flex flex-col md:flex-row flex-wrap justify-between items-center gap-4">
+            <p className="text-gray-400 text-sm">
+              Copyright {new Date().getFullYear()} Future path career. All rights reserved.
             </p>
-            <div className="flex space-x-6">
+            <div className="flex flex-wrap gap-4 text-gray-400 text-sm">
               {supportLinks.map((link) => (
-                <span key={link} className="text-gray-400 text-sm">
-                  {link}
-                </span>
+                <span key={link}>{link}</span>
               ))}
               {legalLinks.map((link) => (
-                <span key={link} className="text-gray-400 text-sm">
-                  {link}
-                </span>
+                <span key={link}>{link}</span>
               ))}
             </div>
           </div>

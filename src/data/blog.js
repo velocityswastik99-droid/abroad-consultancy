@@ -6,7 +6,7 @@ export const BLOG_POSTS = [
     date: 'Mar 18, 2026',
     readTime: '6 min read',
     category: 'Admissions',
-    author: 'GlobalEduConsult Team',
+    author: 'Future path career Team',
     featured: true,
     takeaways: [
       'Build a realistic timeline with clear milestones',

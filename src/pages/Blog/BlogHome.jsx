@@ -21,7 +21,7 @@ const BlogHome = () => {
   return (
     <>
       <Helmet>
-        <title>Blog | GlobalEduConsult Insights</title>
+        <title>Blog | Future path career Insights</title>
         <meta
           name="description"
           content="Study abroad tips, admissions guidance, visa updates, scholarship resources, and student success stories."

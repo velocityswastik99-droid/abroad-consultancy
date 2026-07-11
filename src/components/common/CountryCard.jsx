@@ -4,7 +4,7 @@ import { MapPin, GraduationCap, DollarSign } from 'lucide-react';
 const CountryCard = ({ country }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-      <div className="h-48 bg-gradient-to-br from-[#1a1a2e] to-[#141427] relative overflow-hidden">
+      <div className="h-48 sm:h-56 bg-gradient-to-br from-[#1a1a2e] to-[#141427] relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <h3 className="text-2xl font-bold text-white text-center px-4">{country.title}</h3>
         </div>

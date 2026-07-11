@@ -34,10 +34,10 @@ function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact Us | GlobalEduConsult</title>
+        <title>Contact Us | Future path career</title>
         <meta
           name="description"
-          content="Contact GlobalEduConsult for study abroad guidance, visa support, and admissions counseling."
+          content="Contact Future path career for study abroad guidance, visa support, and admissions counseling."
         />
       </Helmet>
 

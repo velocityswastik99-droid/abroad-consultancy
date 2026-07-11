@@ -23,7 +23,7 @@ const BlogPost = () => {
   return (
     <>
       <Helmet>
-        <title>{post.title} | GlobalEduConsult Blog</title>
+        <title>{post.title} | Future path career Blog</title>
         <meta name="description" content={post.excerpt} />
       </Helmet>
 

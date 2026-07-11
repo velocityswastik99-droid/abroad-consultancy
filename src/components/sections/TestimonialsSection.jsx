@@ -15,14 +15,14 @@ function TestimonialsSection({ testimonials = defaultTestimonials }) {
           </p>
         </div>
 
-        <div className="relative overflow-hidden">
-          <div className="testimonials-marquee flex w-max gap-6">
+        <div className="overflow-hidden">
+          <div className="flex gap-6 pb-4 overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x">
             {marqueeItems.map((item, index) => {
               const isDuplicate = index >= testimonials.length;
               return (
                 <div
                   key={`${item.id}-${index}`}
-                  className="flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]"
+                  className="flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[360px] snap-start"
                   aria-hidden={isDuplicate}
                 >
                   <TestimonialCard testimonial={item} />

@@ -149,7 +149,7 @@ const Home = () => {
       name: 'Rahul Sharma',
       university: 'Stanford University',
       country: 'USA',
-      quote: 'GlobalEduConsult helped me secure admission to my dream university with a 50% scholarship. Their guidance was invaluable throughout the process.',
+      quote: 'Future path career helped me secure admission to my dream university with a 50% scholarship. Their guidance was invaluable throughout the process.',
       rating: 5
     },
     {
@@ -269,7 +269,7 @@ const Home = () => {
   return (
     <div ref={containerRef} className="relative">
       <Helmet>
-        <title>GlobalEduConsult | Study Abroad Experts for USA, UK, Canada, Australia, Germany</title>
+        <title>Future path career | Study Abroad Experts for USA, UK, Canada, Australia, Germany</title>
         <meta name="description" content="Expert study abroad consultancy for USA, UK, Canada, Australia & Germany. University admissions, visa assistance, scholarship guidance & test preparation." />
         <meta name="keywords" content="study abroad, education consultants, USA universities, UK education, Canada student visa, Australia study, Germany education" />
       </Helmet>
@@ -278,15 +278,15 @@ const Home = () => {
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <motion.div 
           style={{ scale, rotate }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-200/15 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+          className="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-slate-200/15 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
         />
         <motion.div 
           style={{ scale, rotate: useTransform(rotate, [0, 360], [0, -360]) }}
-          className="absolute top-1/3 right-1/4 w-96 h-96 bg-slate-300/15 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-2000"
+          className="absolute top-1/3 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-slate-300/15 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-2000"
         />
         <motion.div 
           style={{ scale }}
-          className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-slate-400/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-4000"
+          className="absolute bottom-1/4 left-1/3 w-72 h-72 md:w-96 md:h-96 bg-slate-400/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow animation-delay-4000"
         />
         
         {/* Red overlay effect based on mouse position */}
@@ -333,7 +333,7 @@ const Home = () => {
             className="mb-16"
           />
           
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             {[
               {
                 icon: '🏆',
@@ -447,7 +447,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
               { value: 5000, suffix: '+', label: 'Students Placed', icon: '🎓' },
@@ -503,7 +503,7 @@ const Home = () => {
             {/* Main roadmap line */}
             <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-red-200 via-red-500 to-red-200 transform -translate-y-1/2 hidden md:block" />
             
-            <div className="grid md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
               {countries.map((country, index) => (
                 <motion.div
                   key={country.id}
@@ -592,7 +592,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`relative flex items-start mb-12 ${
+                className={`relative flex flex-col md:items-start md:justify-between mb-12 ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >

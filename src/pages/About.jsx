@@ -55,8 +55,8 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | GlobalEduConsult - Your Study Abroad Partner</title>
-        <meta name="description" content="Learn about GlobalEduConsult's journey, mission, and dedicated team helping students achieve their study abroad dreams since 2010." />
+        <title>About Us | Future path career - Your Study Abroad Partner</title>
+        <meta name="description" content="Learn about Future path career's journey, mission, and dedicated team helping students achieve their study abroad dreams since 2010." />
       </Helmet>
 
       {/* Hero Section */}
@@ -66,7 +66,7 @@ const About = () => {
             <span className="inline-flex items-center rounded-full bg-white/15 px-4 py-1 text-sm font-semibold tracking-wide">
               Since 2010
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-4">About GlobalEduConsult</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-4">About Future path career</h1>
             <p className="text-xl text-white/90">
               For over a decade, we've been transforming dreams into global education realities. 
               Our expert team has guided 5000+ students to successful study abroad journeys.
@@ -139,7 +139,7 @@ const About = () => {
           <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-100">
             <div className="prose max-w-none">
               <p className="text-gray-600 mb-4">
-                Founded in 2010, GlobalEduConsult began with a simple vision: to make quality global education 
+                Founded in 2010, Future path career began with a simple vision: to make quality global education
                 accessible to every deserving student. What started as a small consultancy has grown into a 
                 trusted name in the study abroad industry.
               </p>

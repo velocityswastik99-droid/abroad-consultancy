@@ -53,9 +53,28 @@
     scroll-behavior: smooth;
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   body {
     @apply font-sans text-gray-800 antialiased;
     overflow-x: hidden;
+  }
+
+  img,
+  svg,
+  video {
+    @apply max-w-full h-auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    @apply min-w-0;
   }
 
   h1,
