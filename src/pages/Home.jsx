@@ -6,8 +6,10 @@ import ServicesSection from '../components/sections/ServicesSection';
 import CountriesSection from '../components/sections/CountriesSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import CTASection from '../components/sections/CTASection';
+import Modal from '../components/ui/Modal';
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -645,6 +647,7 @@ const Home = () => {
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          onClick={() => setIsModalOpen(true)}
           className="bg-gradient-to-r from-red-600 to-red-700 text-white p-4 rounded-2xl shadow-2xl cursor-pointer group"
         >
           <div className="flex items-center space-x-3">
@@ -666,6 +669,7 @@ const Home = () => {
       </motion.div>
 
       <CTASection />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Start your journey" description="Let our counselors guide you through admissions, visas, and scholarships." />
     </div>
   );
 };

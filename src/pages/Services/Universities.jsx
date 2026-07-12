@@ -94,9 +94,9 @@ const Universities = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
-                <button className="btn-primary text-sm px-4 py-2">
+                <a href="/contact" className="btn-primary text-sm px-4 py-2 inline-flex items-center justify-center">
                   Apply Now
-                </button>
+                </a>
               </div>
             </div>
           ))}

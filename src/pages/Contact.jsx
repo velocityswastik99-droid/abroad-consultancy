@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight, ExternalLink } from 'lucide-react';
 import ContactForm from '../components/common/ContactForm.jsx';
 import { COMPANY_INFO } from '../utils/constants.js';
 
@@ -90,8 +90,20 @@ function Contact() {
             <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
               <h3 className="text-xl font-bold mb-4">Find Us</h3>
               <div className="rounded-xl overflow-hidden border border-gray-200 mb-6">
-                <div className="h-64 bg-gradient-to-br from-[#1a1a2e] to-[#141427] flex items-center justify-center text-white/80">
-                  Map Placeholder
+                <div className="h-64 bg-gradient-to-br from-[#1a1a2e] to-[#141427] p-4 text-white/90">
+                  <div className="flex h-full flex-col justify-between rounded-xl border border-white/10 bg-black/20 p-5">
+                    <div>
+                      <p className="text-sm uppercase tracking-[0.3em] text-white/60">Office location</p>
+                      <p className="mt-2 text-xl font-semibold">Vaishnavi Signature Apartments</p>
+                      <p className="mt-1 text-sm text-white/80">Vijayawada, Andhra Pradesh</p>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Lat / Long: 16.5062, 80.6480</span>
+                      <a href="https://maps.google.com/?q=16.5062,80.6480" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 hover:bg-white/20">
+                        Open Maps <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="space-y-3 text-sm text-gray-600">

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function CTASection() {
   return (
     <section className="bg-[#1a1a2e] text-white">
@@ -6,9 +8,9 @@ function CTASection() {
         <p className="text-lg md:text-xl mb-8 text-white/80">
           Book a free consultation with our experts and get a personalized roadmap for your study abroad journey.
         </p>
-        <button className="bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-6 py-3 rounded-lg transition">
+        <Link to="/contact" className="inline-flex items-center justify-center bg-secondary-600 hover:bg-secondary-700 text-white font-semibold px-6 py-3 rounded-lg transition">
           Book Free Consultation
-        </button>
+        </Link>
       </div>
     </section>
   );

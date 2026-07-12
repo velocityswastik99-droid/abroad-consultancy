@@ -178,7 +178,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to="/free-consultation" className="hover:text-white/70 transition text-xs md:text-sm flex items-center space-x-1">
+              <Link to="/contact" className="hover:text-white/70 transition text-xs md:text-sm flex items-center space-x-1">
                 <Target size={12} />
                 <span>Free Consultation</span>
               </Link>
@@ -358,7 +358,7 @@ const Header = () => {
               className="flex-shrink-0 ml-2"
             >
               <Link
-                to="/free-consultation"
+                to="/contact"
                 className="btn-secondary px-4 py-2 text-sm font-semibold bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group rounded-lg whitespace-nowrap inline-flex items-center"
               >
                 <span className="relative z-10 flex items-center space-x-1">
@@ -494,7 +494,7 @@ const Header = () => {
                     className="pt-4 px-4"
                   >
                     <Link
-                      to="/free-consultation"
+                      to="/contact"
                       className="block w-full btn-secondary text-center bg-gradient-to-r from-secondary-600 to-secondary-700 text-white hover:from-secondary-700 hover:to-secondary-800 shadow-lg py-3 rounded-lg font-semibold"
                       onClick={() => setIsMenuOpen(false)}
                     >
