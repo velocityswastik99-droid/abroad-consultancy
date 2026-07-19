@@ -244,8 +244,8 @@ const Home = () => {
   // Roadmap path component
   const RoadmapPath = ({ items, className = "" }) => (
     <div className={`relative ${className}`}>
-      <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary-300 via-secondary-500 to-primary-300 transform -translate-y-1/2" />
-      <div className="relative flex justify-between">
+      <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary-300 via-secondary-500 to-primary-300 transform -translate-y-1/2" />
+      <div className="relative flex flex-wrap justify-center md:justify-between gap-4 md:gap-0">
         {items.map((item, index) => (
           <motion.div
             key={index}
@@ -253,7 +253,7 @@ const Home = () => {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.2 }}
-            className="flex flex-col items-center"
+            className="flex flex-col items-center min-w-[100px] sm:min-w-[120px] max-w-[140px]"
           >
             <motion.div
               whileHover={{ scale: 1.2 }}
@@ -261,7 +261,9 @@ const Home = () => {
             >
               {index + 1}
             </motion.div>
-            <span className="mt-2 text-sm font-medium text-gray-700">{item}</span>
+            <span className="mt-2 text-xs sm:text-sm text-center font-medium text-gray-700 whitespace-normal leading-tight">
+              {item}
+            </span>
           </motion.div>
         ))}
       </div>
