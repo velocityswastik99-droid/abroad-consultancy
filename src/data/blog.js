@@ -1,6 +1,7 @@
 export const BLOG_POSTS = [
   {
     slug: 'study-abroad-application-roadmap',
+    image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=60',
     title: 'The Study Abroad Application Roadmap',
     excerpt: 'A practical, step-by-step plan to move from shortlisting to acceptance with less stress.',
     date: 'Mar 18, 2026',
@@ -36,6 +37,7 @@ export const BLOG_POSTS = [
   },
   {
     slug: 'visa-interview-prep-checklist',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=60',
     title: 'Visa Interview Prep Checklist',
     excerpt: 'Confidence comes from preparation. Here is a clear checklist to reduce visa interview anxiety.',
     date: 'Mar 10, 2026',
@@ -71,6 +73,7 @@ export const BLOG_POSTS = [
   },
   {
     slug: 'scholarship-funding-strategies',
+    image: 'https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=60',
     title: 'Scholarship Funding Strategies That Work',
     excerpt: 'Explore realistic ways to fund your education abroad without getting overwhelmed.',
     date: 'Feb 28, 2026',
@@ -106,6 +109,7 @@ export const BLOG_POSTS = [
   },
   {
     slug: 'ielts-toefl-prep-plan',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=60',
     title: 'IELTS and TOEFL Prep Plan',
     excerpt: 'A realistic 6-week plan to improve your English test score without burnout.',
     date: 'Feb 20, 2026',
@@ -141,6 +145,7 @@ export const BLOG_POSTS = [
   },
   {
     slug: 'student-life-abroad-beginners-guide',
+    image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=60',
     title: 'Student Life Abroad: Beginner’s Guide',
     excerpt: 'Understand housing, budgeting, and culture shocks before you land.',
     date: 'Feb 12, 2026',
@@ -176,6 +181,7 @@ export const BLOG_POSTS = [
   },
   {
     slug: 'how-to-write-an-sop',
+    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=60',
     title: 'How to Write a Winning SOP',
     excerpt: 'Structure, tone, and a simple framework to write an SOP that stands out.',
     date: 'Feb 4, 2026',

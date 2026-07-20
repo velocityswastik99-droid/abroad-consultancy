@@ -5,7 +5,7 @@ const ServiceCard = ({ service }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <div className="flex items-start justify-between mb-6">
-        <div className="w-12 h-12 bg-[#1a1a2e]/10 rounded-lg flex items-center justify-center text-2xl">
+        <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center text-2xl text-primary-600">
           {service.icon}
         </div>
         <span className="text-xs font-semibold bg-[#1a1a2e]/10 text-[#1a1a2e] px-3 py-1 rounded-full">

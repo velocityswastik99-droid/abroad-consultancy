@@ -39,7 +39,7 @@ const ServicesOverview = () => {
           <div className="relative">
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#1a1a2e]/20"></div>
 
-            <div className="space-y-12 md:space-y-0">
+            <div className="space-y-12 md:space-y-8">
               {[
                 { number: 1, title: 'Profile Assessment', desc: 'Detailed evaluation of academic background and goals' },
                 { number: 2, title: 'University Shortlisting', desc: 'Personalized selection of best-fit universities' },
@@ -47,16 +47,17 @@ const ServicesOverview = () => {
                 { number: 4, title: 'Visa Assistance', desc: 'End-to-end visa guidance and interview preparation' },
                 { number: 5, title: 'Pre-Departure Support', desc: 'Accommodation, travel, and orientation assistance' }
               ].map((step, index) => (
-                <div key={step.number} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                <div key={step.number} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} md:items-start`}
+                    >
                   <div
-                    className={`w-12 h-12 bg-[#1a1a2e] text-white rounded-full flex items-center justify-center font-bold text-xl z-10 ${
+                    className={`w-12 h-12 bg-[#1a1a2e] text-white rounded-full flex items-center justify-center font-bold text-lg z-10 ${
                       index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                     }`}
                   >
                     {step.number}
                   </div>
                   <div
-                    className={`flex-grow bg-white rounded-xl shadow-lg p-6 ${
+                    className={`flex-grow bg-white rounded-xl shadow-lg p-6 max-w-3xl ${
                       index % 2 === 0 ? 'md:text-left' : 'md:text-right'
                     }`}
                   >

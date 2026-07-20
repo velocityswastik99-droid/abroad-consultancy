@@ -50,13 +50,17 @@ const BlogHome = () => {
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-10 items-center bg-slate-50 rounded-2xl p-6 md:p-10 border border-slate-100">
               <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-[#1a1a2e] to-[#141427] text-white p-8 flex flex-col justify-between">
-                  <div className="text-sm uppercase tracking-widest">Featured</div>
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-3">{featuredPost.title}</h2>
-                    <p className="text-white/70">{featuredPost.excerpt}</p>
+                {featuredPost.image ? (
+                  <img src={featuredPost.image} alt={featuredPost.title} className="aspect-[4/3] rounded-2xl object-cover w-full" />
+                ) : (
+                  <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-[#1a1a2e] to-[#141427] text-white p-8 flex flex-col justify-between">
+                    <div className="text-sm uppercase tracking-widest">Featured</div>
+                    <div>
+                      <h2 className="text-2xl md:text-3xl font-bold mb-3">{featuredPost.title}</h2>
+                      <p className="text-white/70">{featuredPost.excerpt}</p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               <div>
                 <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
@@ -112,7 +116,11 @@ const BlogHome = () => {
                 key={post.slug}
                 className="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition overflow-hidden"
               >
-                <div className="h-40 bg-gradient-to-br from-slate-100 to-slate-200" />
+                {post.image ? (
+                  <img src={post.image} alt={post.title} className="h-40 w-full object-cover rounded-t-2xl" />
+                ) : (
+                  <div className="h-40 bg-gradient-to-br from-slate-100 to-slate-200" />
+                )}
                 <div className="p-6">
                   <div className="inline-flex items-center text-xs font-semibold text-[#1a1a2e] bg-slate-50 px-3 py-1 rounded-full border border-slate-100 mb-4">
                     {post.category}

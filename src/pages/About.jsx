@@ -10,7 +10,7 @@ const TEAM_MEMBERS = [
 
 const VALUES = [
   {
-    title: 'Student-Centric',
+    title: 'Student-Focused',
     description: 'Your success is our priority',
     icon: Users,
     color: 'bg-primary-100 text-primary-600',
@@ -44,8 +44,8 @@ const MILESTONES = [
 ];
 
 const STATS = [
-  { value: '5,000+', label: 'Students Guided', icon: GraduationCap },
-  { value: '50+', label: 'Countries Covered', icon: MapPin },
+  { value: '5,000+', label: 'Students Placed', icon: GraduationCap },
+  { value: '50+', label: 'Countries', icon: MapPin },
   { value: '98%', label: 'Visa Success Rate', icon: CheckCircle },
   { value: '15+', label: 'Years of Experience', icon: Award },
 ];

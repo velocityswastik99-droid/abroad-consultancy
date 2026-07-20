@@ -144,7 +144,7 @@ function StudyCountryPage({
                         {course.duration}
                       </span>
                       <span className="flex items-center">
-                        <DollarSign size={14} className="mr-1" />
+                          <DollarSign size={14} className="mr-1 text-primary-600" />
                         {course.avgSalary}
                       </span>
                     </div>

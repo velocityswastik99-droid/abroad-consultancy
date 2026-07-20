@@ -1,7 +1,88 @@
 import { Link } from 'react-router-dom';
 import { PlayCircle, Award, Globe, Users, Target, MapPin, TrendingUp, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+function FormWithValidation() {
+  const [values, setValues] = useState({ name: '', email: '', phone: '', destination: '', level: '' });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues((v) => ({ ...v, [name]: value }));
+    setErrors((err) => ({ ...err, [name]: '' }));
+  };
+
+  const validate = () => {
+    const newErr = {};
+    if (!values.name.trim()) newErr.name = 'Required';
+    if (!values.email.trim()) newErr.email = 'Required';
+    if (!values.phone.trim()) newErr.phone = 'Required';
+    if (!values.destination) newErr.destination = 'Required';
+    if (!values.level) newErr.level = 'Required';
+    setErrors(newErr);
+    return Object.keys(newErr).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    // minimal submit behaviour - replace with actual API call as needed
+    alert('Thanks! We will contact you soon.');
+    setValues({ name: '', email: '', phone: '', destination: '', level: '' });
+  };
+
+  return (
+    <form className="space-y-4" onSubmit={handleSubmit}>
+      <div>
+        <input name="name" value={values.name} onChange={handleChange} placeholder="Full Name" className="input-field border-2 transition w-full px-4 py-3 rounded-lg" />
+        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+      </div>
+
+      <div>
+        <input name="email" value={values.email} onChange={handleChange} placeholder="Email Address" type="email" className="input-field border-2 transition w-full px-4 py-3 rounded-lg" />
+        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+      </div>
+
+      <div>
+        <input name="phone" value={values.phone} onChange={handleChange} placeholder="Phone Number" type="tel" className="input-field border-2 transition w-full px-4 py-3 rounded-lg" />
+        {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+      </div>
+
+      <div className="relative">
+        <select name="destination" value={values.destination} onChange={handleChange} className="input-field border-2 transition w-full px-4 py-3 rounded-lg appearance-none pr-10">
+          <option value="">Preferred Study Destination</option>
+          <option value="usa">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="canada">Canada</option>
+          <option value="australia">Australia</option>
+          <option value="germany">Germany</option>
+          <option value="other">Other</option>
+        </select>
+        <div className="absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none">
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7l5 5 5-5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+        {errors.destination && <p className="text-red-500 text-sm mt-1">{errors.destination}</p>}
+      </div>
+
+      <div className="relative">
+        <select name="level" value={values.level} onChange={handleChange} className="input-field border-2 transition w-full px-4 py-3 rounded-lg appearance-none pr-10">
+          <option value="">Level of Study</option>
+          <option value="bachelors">Bachelor's Degree</option>
+          <option value="masters">Master's Degree</option>
+          <option value="phd">PhD/Doctorate</option>
+          <option value="diploma">Diploma/Certificate</option>
+        </select>
+        <div className="absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none">
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7l5 5 5-5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+        {errors.level && <p className="text-red-500 text-sm mt-1">{errors.level}</p>}
+      </div>
+
+      <button type="submit" className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-6 rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg">Start Your Roadmap</button>
+    </form>
+  );
+}
 
 const HeroSection = () => {
   const sectionRef = useRef(null);
@@ -102,6 +183,12 @@ const HeroSection = () => {
       </div>
 
       <div className="container-custom relative py-16 md:py-24 z-10">
+        {/* Small lead-in pill moved from Home */}
+        <div className="mb-6">
+          <div className="inline-block px-4 py-2 bg-white/10 text-[#1a1a2e] rounded-full text-sm font-semibold">
+            Your Journey Starts Here
+          </div>
+        </div>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -271,96 +358,8 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <form className="space-y-4">
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <input 
-                    type="text" 
-                    placeholder="Full Name" 
-                    className="input-field border-2 focus:border-red-500 transition w-full px-4 py-3 rounded-lg" 
-                    required 
-                  />
-                </motion.div>
-                
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <input 
-                    type="email" 
-                    placeholder="Email Address" 
-                    className="input-field border-2 focus:border-red-500 transition w-full px-4 py-3 rounded-lg" 
-                    required 
-                  />
-                </motion.div>
-                
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <input 
-                    type="tel" 
-                    placeholder="Phone Number" 
-                    className="input-field border-2 focus:border-red-500 transition w-full px-4 py-3 rounded-lg" 
-                    required 
-                  />
-                </motion.div>
-                
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="relative"
-                >
-                  <select className="input-field border-2 focus:border-red-500 transition w-full px-4 py-3 rounded-lg appearance-none">
-                    <option value="">Preferred Study Destination</option>
-                    <option value="usa">🇺🇸 United States</option>
-                    <option value="uk">🇬🇧 United Kingdom</option>
-                    <option value="canada">🇨🇦 Canada</option>
-                    <option value="australia">🇦🇺 Australia</option>
-                    <option value="germany">🇩🇪 Germany</option>
-                    <option value="other">🌍 Other</option>
-                  </select>
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                    <div className="w-2 h-2 border-r-2 border-b-2 border-red-500 transform rotate-45" />
-                  </div>
-                </motion.div>
-                
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  className="relative"
-                >
-                  <select className="input-field border-2 focus:border-red-500 transition w-full px-4 py-3 rounded-lg appearance-none">
-                    <option value="">Level of Study</option>
-                    <option value="bachelors">🎓 Bachelor's Degree</option>
-                    <option value="masters">📚 Master's Degree</option>
-                    <option value="phd">🔬 PhD/Doctorate</option>
-                    <option value="diploma">📜 Diploma/Certificate</option>
-                  </select>
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                    <div className="w-2 h-2 border-r-2 border-b-2 border-red-500 transform rotate-45" />
-                  </div>
-                </motion.div>
-                
-                <motion.button 
-                  type="submit" 
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-6 rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <Target size={20} />
-                    <span>Start Your Roadmap</span>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                </motion.button>
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                {/* Left blank - replaced by FormWithValidation component via wrapper */}
               </form>
 
               {/* Form footer with roadmap */}

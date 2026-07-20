@@ -316,14 +316,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              className="inline-block px-6 py-2 bg-[#1a1a2e]/10 text-[#1a1a2e] rounded-full text-sm font-bold mb-4"
-            >
-              Your Journey Starts Here
-            </motion.div>
+            {/* Lead-in pill moved to HeroSection for visual consistency */}
             <h2 className="section-title">
               Your <span className="text-primary-600">Roadmap</span> to Success
             </h2>
@@ -354,7 +347,7 @@ const Home = () => {
                 steps: ['1-on-1 Counseling', 'Custom Strategy', 'Ongoing Support']
               },
               {
-                icon: '�️',
+                icon: '🛟',
                 title: 'Dedicated Support',
                 description: 'End-to-end guidance for applications, documents, visas, and pre-departure planning',
                 delay: 0.3,

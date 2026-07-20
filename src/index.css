@@ -187,6 +187,14 @@
       focus:outline-none transition hover:border-primary-300;
   }
 
+  /* Custom arrow for selects that use appearance-none */
+  .input-field.appearance-none {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2394a3b8'><path d='M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z' /></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+  }
+
   /* Section Titles with Roadmap Style */
   .section-title {
     @apply text-3xl md:text-4xl font-bold text-center mb-4 relative inline-block;

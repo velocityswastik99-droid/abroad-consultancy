@@ -173,7 +173,7 @@ const StudyUSA = () => {
                         {course.duration}
                       </span>
                       <span className="flex items-center">
-                        <DollarSign size={14} className="mr-1" />
+                        <DollarSign size={14} className="mr-1 text-primary-600" />
                         {course.avgSalary}
                       </span>
                     </div>
@@ -184,7 +184,7 @@ const StudyUSA = () => {
 
             {/* Visa Information */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="font-bold mb-4">Visa Information (F-1)</h3>
+              <h3 className="text-lg font-bold mb-4">Visa Information (F-1)</h3>
               <div className="space-y-3">
                 <div>
                   <div className="font-semibold text-sm text-gray-600">Processing Time</div>
