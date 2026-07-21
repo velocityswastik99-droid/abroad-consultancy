@@ -157,13 +157,20 @@ const Header = () => {
         </div>
 
         <div className="container-custom flex flex-col md:flex-row justify-between items-center text-sm space-y-1 md:space-y-0 relative z-10">
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
             <motion.div 
               className="flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
             >
               <Phone size={14} />
-              <span>{COMPANY_INFO.phone}</span>
+              <span>India: {COMPANY_INFO.phoneIndia}</span>
+            </motion.div>
+            <motion.div 
+              className="hidden md:flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Phone size={14} />
+              <span>UK: {COMPANY_INFO.phoneUK}</span>
             </motion.div>
             <motion.div 
               className="hidden md:flex items-center space-x-2"

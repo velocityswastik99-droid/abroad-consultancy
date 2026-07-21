@@ -7,7 +7,7 @@ const CONTACT_CARDS = [
   {
     title: 'Call Us',
     description: 'Talk to a counselor today',
-    value: COMPANY_INFO.phone,
+    value: `${COMPANY_INFO.phoneIndia} | UK: ${COMPANY_INFO.phoneUK}`,
     icon: Phone,
   },
   {
@@ -117,7 +117,11 @@ function Contact() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone size={16} className="text-[#1a1a2e]" />
-                  {COMPANY_INFO.phone}
+                  India: {COMPANY_INFO.phoneIndia}
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone size={16} className="text-[#1a1a2e]" />
+                  UK: {COMPANY_INFO.phoneUK}
                 </p>
               </div>
               <button className="mt-6 inline-flex items-center gap-2 text-[#1a1a2e] font-semibold">

@@ -57,9 +57,12 @@ const Footer = () => {
                 <MapPin size={20} className="text-primary-500 mt-1 flex-shrink-0" />
                 <span className="text-gray-400">{COMPANY_INFO.address}</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-start space-x-3">
                 <Phone size={20} className="text-primary-500 flex-shrink-0" />
-                <span className="text-gray-400">{COMPANY_INFO.phone}</span>
+                <div className="space-y-1">
+                  <span className="text-gray-400">India: {COMPANY_INFO.phoneIndia}</span>
+                  <span className="text-gray-400">UK: {COMPANY_INFO.phoneUK}</span>
+                </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={20} className="text-primary-500 flex-shrink-0" />

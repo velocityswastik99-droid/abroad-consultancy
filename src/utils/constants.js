@@ -1,8 +1,10 @@
 export const COMPANY_INFO = {
   name: 'Future path career',
   tagline: 'Study Abroad Experts',
-  email: 'info@futurepathcareer.com',
+  email: 'support@futurepathcareers.com',
   phone: '+91 77779 87757',
+  phoneIndia: '+91 77779 87757',
+  phoneUK: '+44 20 7946 0958',
   address: 'Vaishnavi Signature Apartments, Vijayawada 520007',
   workingHours: 'Mon-Fri: 9AM-7PM, Sat: 10AM-4PM'
 };
