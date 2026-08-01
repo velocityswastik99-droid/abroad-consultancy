@@ -1,5 +1,5 @@
 export const COMPANY_INFO = {
-  name: 'Future path career',
+  name: 'Future path careers',
   tagline: 'Study Abroad Experts',
   email: 'support@futurepathcareers.com',
   phone: '+91 77779 87757',

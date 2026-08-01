@@ -1,6 +1,10 @@
 export const faqs = {
   general: [
     {
+      question: 'How much does it cost to study abroad?',
+      answer: 'The cost depends on the country, course level, and university. Typically, you should budget for tuition, living expenses, visa fees, and travel. We can help you compare affordable destinations and scholarship options.'
+    },
+    {
       question: 'How early should I start my study abroad planning?',
       answer: 'We recommend starting at least 12-18 months before your intended start date. This gives you enough time for university research, test preparation, application submission, and visa processing.'
     },

@@ -5,7 +5,7 @@ import { faqs } from '../../data/faqs';
 
 const FAQ = () => {
   const [activeCategory, setActiveCategory] = useState('general');
-  const [openItems, setOpenItems] = useState([]);
+  const [openItem, setOpenItem] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   const categories = [
@@ -16,12 +16,8 @@ const FAQ = () => {
     { id: 'preparation', name: 'Test Preparation' },
   ];
 
-  const toggleItem = (index) => {
-    setOpenItems(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
+  const toggleItem = (question) => {
+    setOpenItem(prev => prev === question ? null : question);
   };
 
   const filteredFaqs = faqs[activeCategory]?.filter(faq => 
@@ -75,7 +71,7 @@ const FAQ = () => {
                     key={category.id}
                     onClick={() => {
                       setActiveCategory(category.id);
-                      setOpenItems([]);
+                      setOpenItem(null);
                     }}
                     className={`w-full text-left px-4 py-3 rounded-lg transition ${
                       activeCategory === category.id
@@ -113,20 +109,20 @@ const FAQ = () => {
               </div>
             ) : (
               <div className="space-y-4">
-                {filteredFaqs.map((faq, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
+                {filteredFaqs.map((faq) => (
+                  <div key={faq.question} className="bg-white rounded-xl shadow-lg overflow-hidden">
                     <button
-                      onClick={() => toggleItem(index)}
+                      onClick={() => toggleItem(faq.question)}
                       className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition"
                     >
                       <span className="font-semibold text-lg pr-8">{faq.question}</span>
-                      {openItems.includes(index) ? (
+                      {openItem === faq.question ? (
                         <ChevronUp size={20} className="text-primary-600 flex-shrink-0" />
                       ) : (
                         <ChevronDown size={20} className="text-primary-600 flex-shrink-0" />
                       )}
                     </button>
-                    {openItems.includes(index) && (
+                    {openItem === faq.question && (
                       <div className="px-6 py-4 border-t border-gray-200">
                         <p className="text-gray-600">{faq.answer}</p>
                       </div>
@@ -152,7 +148,8 @@ const FAQ = () => {
                     key={index}
                     onClick={() => {
                       setActiveCategory('general');
-                      setSearchQuery(question.split(' ')[0]);
+                      setSearchQuery(question);
+                      setOpenItems([]);
                     }}
                     className="text-left p-4 border border-gray-200 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition"
                   >

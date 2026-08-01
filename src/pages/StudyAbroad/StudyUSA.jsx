@@ -205,9 +205,9 @@ const StudyUSA = () => {
             <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-6 text-white text-center">
               <h3 className="font-bold mb-3">Need Help with USA Admissions?</h3>
               <p className="text-sm mb-4">Our experts have 15+ years experience with US universities</p>
-              <button className="w-full bg-white text-primary-600 hover:bg-gray-100 font-bold py-3 rounded-lg transition">
+              <a href="/contact" className="block w-full bg-white text-primary-600 hover:bg-gray-100 font-bold py-3 rounded-lg transition">
                 Book Free Consultation
-              </button>
+              </a>
             </div>
           </div>
         </div>

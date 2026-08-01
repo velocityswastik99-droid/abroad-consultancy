@@ -3,6 +3,16 @@ import { useState } from 'react';
 function ContactForm() {
   const [values, setValues] = useState({ name: '', email: '', phone: '', destination: '', goals: '' });
   const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const destinationOptions = [
+    'United States',
+    'United Kingdom',
+    'Canada',
+    'Australia',
+    'Germany',
+    'Other'
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +29,7 @@ function ContactForm() {
     if (!values.destination) newErr.destination = 'Required';
     setErrors(newErr);
     if (Object.keys(newErr).length === 0) {
-      alert('Thank you — we will contact you soon.');
+      setSubmitted(true);
       setValues({ name: '', email: '', phone: '', destination: '', goals: '' });
     }
   };
@@ -44,11 +54,9 @@ function ContactForm() {
         <div className="relative">
           <select name="destination" value={values.destination} onChange={handleChange} className="input-field appearance-none pr-8">
             <option value="" disabled hidden>Preferred Destination *</option>
-            <option value="usa">United States</option>
-            <option value="uk">United Kingdom</option>
-            <option value="canada">Canada</option>
-            <option value="australia">Australia</option>
-            <option value="germany">Germany</option>
+            {destinationOptions.map((country) => (
+              <option key={country} value={country.toLowerCase().replace(/\s+/g, '-')}>{country}</option>
+            ))}
           </select>
           {errors.destination && <p className="text-red-500 text-sm mt-1">{errors.destination}</p>}
         </div>
@@ -57,6 +65,11 @@ function ContactForm() {
       <button type="submit" className="btn-primary w-full md:w-auto">
         Request Consultation
       </button>
+      {submitted && (
+        <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-700">
+          Hello! 👋 Thanks for reaching out. Our counselor will contact you soon.
+        </div>
+      )}
     </form>
   );
 }

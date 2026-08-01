@@ -1,10 +1,18 @@
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { COMPANY_INFO, SOCIAL_LINKS } from '../../utils/constants';
 
 const Footer = () => {
-  const supportLinks = ['FAQ', 'Free Consultation', 'Document Checklist'];
+  const supportLinks = [
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Free Consultation', href: '/contact' },
+    { label: 'Document Checklist', href: '/services' }
+  ];
 
-  const legalLinks = ['Privacy Policy', 'Terms & Conditions'];
+  const legalLinks = [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms & Conditions', href: '/terms' }
+  ];
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -16,13 +24,13 @@ const Footer = () => {
               <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-transparent p-2">
                 <img 
                   src="/images/logo.svg" 
-                  alt="Future path career Logo" 
+                  alt="Future path careers Logo" 
                   className="h-full w-full object-contain"
                 />
               </div>
               <div>
                 <h2 className="text-2xl font-bold">
-                  Future path career
+                  {COMPANY_INFO.name}
                 </h2>
                 <p className="text-gray-400 text-sm">Study Abroad Experts</p>
               </div>
@@ -53,21 +61,26 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-6 text-white">Contact Info</h3>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start space-x-3 text-gray-400 hover:text-white transition"
+              >
                 <MapPin size={20} className="text-primary-500 mt-1 flex-shrink-0" />
-                <span className="text-gray-400">{COMPANY_INFO.address}</span>
-              </div>
+                <span>{COMPANY_INFO.address}</span>
+              </a>
               <div className="flex items-start space-x-3">
                 <Phone size={20} className="text-primary-500 flex-shrink-0" />
                 <div className="space-y-1">
-                  <span className="text-gray-400">India: {COMPANY_INFO.phoneIndia}</span>
-                  <span className="text-gray-400">UK: {COMPANY_INFO.phoneUK}</span>
+                  <a href={`tel:${COMPANY_INFO.phoneIndia}`} className="block text-gray-400 hover:text-white transition">India: {COMPANY_INFO.phoneIndia}</a>
+                  <a href={`tel:${COMPANY_INFO.phoneUK}`} className="block text-gray-400 hover:text-white transition">UK: {COMPANY_INFO.phoneUK}</a>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
+              <a href={`mailto:${COMPANY_INFO.email}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition">
                 <Mail size={20} className="text-primary-500 flex-shrink-0" />
-                <span className="text-gray-400">{COMPANY_INFO.email}</span>
-              </div>
+                <span>{COMPANY_INFO.email}</span>
+              </a>
               <div className="flex items-center space-x-3">
                 <Clock size={20} className="text-primary-500 flex-shrink-0" />
                 <span className="text-gray-400">{COMPANY_INFO.workingHours}</span>
@@ -96,14 +109,14 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row flex-wrap justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              Copyright {new Date().getFullYear()} Future path career. All rights reserved.
+              Copyright {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-4 text-gray-400 text-sm">
               {supportLinks.map((link) => (
-                <span key={link}>{link}</span>
+                <Link key={link.label} to={link.href} className="hover:text-white transition">{link.label}</Link>
               ))}
               {legalLinks.map((link) => (
-                <span key={link}>{link}</span>
+                <Link key={link.label} to={link.href} className="hover:text-white transition">{link.label}</Link>
               ))}
             </div>
           </div>

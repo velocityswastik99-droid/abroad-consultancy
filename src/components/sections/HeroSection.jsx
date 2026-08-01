@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 function FormWithValidation() {
   const [values, setValues] = useState({ name: '', email: '', phone: '', destination: '', level: '' });
   const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,8 +28,7 @@ function FormWithValidation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
-    // minimal submit behaviour - replace with actual API call as needed
-    alert('Thanks! We will contact you soon.');
+    setSubmitted(true);
     setValues({ name: '', email: '', phone: '', destination: '', level: '' });
   };
 
@@ -80,6 +80,11 @@ function FormWithValidation() {
       </div>
 
       <button type="submit" className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-6 rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg">Start Your Roadmap</button>
+      {submitted && (
+        <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-700">
+          Hello! 👋 Thanks for sharing your details. Our counselor will contact you soon.
+        </div>
+      )}
     </form>
   );
 }
@@ -358,9 +363,9 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                {/* Left blank - replaced by FormWithValidation component via wrapper */}
-              </form>
+              <div className="space-y-4">
+                <FormWithValidation />
+              </div>
 
               {/* Form footer with roadmap */}
               <motion.div 

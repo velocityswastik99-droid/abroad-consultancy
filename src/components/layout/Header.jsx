@@ -158,27 +158,30 @@ const Header = () => {
 
         <div className="container-custom flex flex-col md:flex-row justify-between items-center text-sm space-y-1 md:space-y-0 relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
-            <motion.div 
-              className="flex items-center space-x-2"
+            <motion.a
+              href={`tel:${COMPANY_INFO.phoneIndia}`}
+              className="flex items-center space-x-2 hover:text-white/70 transition"
               whileHover={{ scale: 1.05 }}
             >
               <Phone size={14} />
               <span>India: {COMPANY_INFO.phoneIndia}</span>
-            </motion.div>
-            <motion.div 
-              className="hidden md:flex items-center space-x-2"
+            </motion.a>
+            <motion.a
+              href={`tel:${COMPANY_INFO.phoneUK}`}
+              className="hidden md:flex items-center space-x-2 hover:text-white/70 transition"
               whileHover={{ scale: 1.05 }}
             >
               <Phone size={14} />
               <span>UK: {COMPANY_INFO.phoneUK}</span>
-            </motion.div>
-            <motion.div 
-              className="hidden md:flex items-center space-x-2"
+            </motion.a>
+            <motion.a
+              href={`mailto:${COMPANY_INFO.email}`}
+              className="hidden md:flex items-center space-x-2 hover:text-white/70 transition"
               whileHover={{ scale: 1.05 }}
             >
               <Mail size={14} />
               <span>{COMPANY_INFO.email}</span>
-            </motion.div>
+            </motion.a>
           </div>
           <div className="flex items-center space-x-4">
             <motion.div
@@ -218,7 +221,7 @@ const Header = () => {
         <div className="h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-500" />
         
         <nav className="container-custom">
-          <div className="flex justify-between items-center h-16 md:h-20">
+          <div className="flex justify-between items-center h-16 md:h-20 gap-3">
             {/* Logo with red theme */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -233,7 +236,7 @@ const Header = () => {
                 >
                   <img 
                     src="/images/logo.svg" 
-                    alt="Future path career Logo" 
+                    alt="Future path careers Logo" 
                     className="h-full w-auto max-h-full object-contain transition-all"
                     loading="eager"
                   />
@@ -357,24 +360,6 @@ const Header = () => {
                 ))}
               </div>
             </div>
-
-            {/* Apply Now Button - Right aligned with left margin */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex-shrink-0 ml-2"
-            >
-              <Link
-                to="/contact"
-                className="btn-secondary px-4 py-2 text-sm font-semibold bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group rounded-lg whitespace-nowrap inline-flex items-center"
-              >
-                <span className="relative z-10 flex items-center space-x-1">
-                  <Target size={14} />
-                  <span>Apply Now</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-              </Link>
-            </motion.div>
 
             {/* Mobile menu button */}
             <motion.button
@@ -500,14 +485,6 @@ const Header = () => {
                     transition={{ delay: 0.5 }}
                     className="pt-4 px-4"
                   >
-                    <Link
-                      to="/contact"
-                      className="block w-full btn-secondary text-center bg-gradient-to-r from-secondary-600 to-secondary-700 text-white hover:from-secondary-700 hover:to-secondary-800 shadow-lg py-3 rounded-lg font-semibold"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Apply Now
-                    </Link>
-                    
                     {/* Mobile roadmap footer */}
                     <div className="mt-4 flex items-center justify-center space-x-4 text-xs text-gray-500">
                       <div className="flex items-center space-x-1">

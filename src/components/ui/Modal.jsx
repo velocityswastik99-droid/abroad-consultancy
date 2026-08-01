@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import ContactForm from '../common/ContactForm.jsx';
 
 function Modal({ isOpen, onClose, title, description }) {
   useEffect(() => {
@@ -25,7 +25,7 @@ function Modal({ isOpen, onClose, title, description }) {
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 px-4" role="dialog" aria-modal="true">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+      <div className="w-full max-w-2xl rounded-2xl bg-white p-4 shadow-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-start justify-between gap-4">
           <div>
             <h3 className="text-xl font-bold text-gray-900">{title}</h3>
@@ -36,13 +36,8 @@ function Modal({ isOpen, onClose, title, description }) {
           </button>
         </div>
 
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
-          <button onClick={onClose} className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
-            Close
-          </button>
-          <Link to="/contact" onClick={onClose} className="rounded-lg bg-primary-600 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-primary-700">
-            Contact Us
-          </Link>
+        <div className="mt-4">
+          <ContactForm />
         </div>
       </div>
     </div>
