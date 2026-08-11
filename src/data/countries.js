@@ -1,6 +1,56 @@
 export const countries = [
   {
     id: 1,
+    slug: 'uk',
+    name: 'United Kingdom',
+    title: 'Study in UK',
+    description: 'Historic universities with globally recognized degrees and shorter course durations.',
+    image: '/images/countries/uk.jpg',
+    universities: 160,
+    averageTuition: 'GBP 12,000 - GBP 35,000',
+    popularCourses: ['Law', 'Medicine', 'Finance', 'Engineering', 'Business'],
+    facts: [
+      "World's oldest universities",
+      '1-year Master’s programs',
+      'Post-study work visa for 2 years',
+      'Strong research infrastructure',
+      'Cultural diversity'
+    ],
+    requirements: [
+      'Academic transcripts',
+      'English proficiency (IELTS/TOEFL)',
+      'Personal statement',
+      'References',
+      'Portfolio (for design courses)'
+    ]
+  },
+  {
+    id: 2,
+    slug: 'australia',
+    name: 'Australia',
+    title: 'Study in Australia',
+    description: 'Innovative education system with strong focus on research and industry connections.',
+    image: '/images/countries/australia.jpg',
+    universities: 43,
+    averageTuition: 'AUD 20,000 - AUD 45,000',
+    popularCourses: ['Hospitality and Tourism', 'Engineering', 'Health Sciences', 'Business', 'IT'],
+    facts: [
+      'World-class research facilities',
+      'Post-study work rights up to 4 years',
+      'High standard of living',
+      'Strong job market',
+      'Beautiful natural environment'
+    ],
+    requirements: [
+      'Academic qualifications',
+      'English proficiency (IELTS/TOEFL/PTE)',
+      'Genuine Temporary Entrant (GTE) statement',
+      'Health insurance (OSHC)',
+      'Financial proof'
+    ]
+  },
+  {
+    id: 3,
     slug: 'usa',
     name: 'United States',
     title: 'Study in USA',
@@ -25,32 +75,7 @@ export const countries = [
     ]
   },
   {
-    id: 2,
-    slug: 'uk',
-    name: 'United Kingdom',
-    title: 'Study in UK',
-    description: 'Historic universities with globally recognized degrees and shorter course durations.',
-    image: '/images/countries/uk.jpg',
-    universities: 160,
-    averageTuition: 'GBP 12,000 - GBP 35,000',
-    popularCourses: ['Law', 'Medicine', 'Finance', 'Engineering', 'Business'],
-    facts: [
-      'World\'s oldest universities',
-      '1-year Master\'s programs',
-      'Post-study work visa for 2 years',
-      'Strong research infrastructure',
-      'Cultural diversity'
-    ],
-    requirements: [
-      'Academic transcripts',
-      'English proficiency (IELTS/TOEFL)',
-      'Personal statement',
-      'References',
-      'Portfolio (for design courses)'
-    ]
-  },
-  {
-    id: 3,
+    id: 4,
     slug: 'canada',
     name: 'Canada',
     title: 'Study in Canada',
@@ -72,31 +97,6 @@ export const countries = [
       'Statement of Purpose',
       'Letters of Recommendation',
       'Proof of funds'
-    ]
-  },
-  {
-    id: 4,
-    slug: 'australia',
-    name: 'Australia',
-    title: 'Study in Australia',
-    description: 'Innovative education system with strong focus on research and industry connections.',
-    image: '/images/countries/australia.jpg',
-    universities: 43,
-    averageTuition: 'AUD 20,000 - AUD 45,000',
-    popularCourses: ['Hospitality and Tourism', 'Engineering', 'Health Sciences', 'Business', 'IT'],
-    facts: [
-      'World-class research facilities',
-      'Post-study work rights up to 4 years',
-      'High standard of living',
-      'Strong job market',
-      'Beautiful natural environment'
-    ],
-    requirements: [
-      'Academic qualifications',
-      'English proficiency (IELTS/TOEFL/PTE)',
-      'Genuine Temporary Entrant (GTE) statement',
-      'Health insurance (OSHC)',
-      'Financial proof'
     ]
   },
   {

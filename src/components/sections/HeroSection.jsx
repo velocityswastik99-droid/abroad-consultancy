@@ -190,7 +190,7 @@ const HeroSection = () => {
       <div className="container-custom relative py-16 md:py-24 z-10">
         {/* Small lead-in pill moved from Home */}
         <div className="mb-6">
-          <div className="inline-block px-4 py-2 bg-white/10 text-[#1a1a2e] rounded-full text-sm font-semibold">
+          <div className="inline-block px-4 py-2 bg-white/10 text-white rounded-full text-sm font-semibold">
             Your Journey Starts Here
           </div>
         </div>

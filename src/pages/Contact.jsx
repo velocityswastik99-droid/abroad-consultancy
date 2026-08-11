@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight, ExternalLink } from 'lucide-react';
 import ContactForm from '../components/common/ContactForm.jsx';
 import { COMPANY_INFO } from '../utils/constants.js';
@@ -31,6 +32,10 @@ const CONTACT_CARDS = [
 ];
 
 function Contact() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const initialDestination = searchParams.get('destination') || '';
+
   return (
     <>
       <Helmet>
@@ -84,7 +89,7 @@ function Contact() {
               <p className="text-gray-600 mb-6">
                 Share your preferences and we’ll connect you with the right counselor.
               </p>
-              <ContactForm />
+              <ContactForm initialDestination={initialDestination} submitLabel="Send Enquiry" />
             </div>
 
             <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
@@ -106,6 +111,7 @@ function Contact() {
                   </div>
                 </div>
               </div>
+
               <div className="space-y-3 text-sm text-gray-600">
                 <p className="flex items-center gap-2">
                   <MapPin size={16} className="text-[#1a1a2e]" />
@@ -124,9 +130,10 @@ function Contact() {
                   UK: {COMPANY_INFO.phoneUK}
                 </p>
               </div>
-              <button className="mt-6 inline-flex items-center gap-2 text-[#1a1a2e] font-semibold">
+
+              <a href="https://maps.google.com/?q=Vaishnavi Signature Apartments, Vijayawada 520007" className="mt-6 inline-flex items-center gap-2 text-[#1a1a2e] font-semibold">
                 Get Directions <ArrowRight size={16} />
-              </button>
+              </a>
             </div>
           </div>
         </div>

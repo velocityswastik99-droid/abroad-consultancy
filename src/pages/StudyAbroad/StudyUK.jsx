@@ -1,9 +1,12 @@
 import StudyCountryPage from '../../components/common/StudyCountryPage';
+import { Award, Building, Clock, DollarSign } from 'lucide-react';
 
 function StudyUK() {
   return (
     <StudyCountryPage
       countryName="UK"
+      countrySlug="uk"
+      featuredUniversities={['Aston University', 'University of East London', 'University of Hertfordshire', 'University of Northumbria', 'Anglia Ruskin University']}
       heroBadge="#1 Choice for Short Degrees"
       heroTitle="Study in United Kingdom"
       heroDescription="The UK offers highly respected universities, shorter degree durations, and strong career opportunities for international students."
@@ -32,6 +35,8 @@ function StudyUK() {
         { label: 'Visa Fees', value: '£490' },
         { label: 'Interview Required', value: 'Usually yes' },
       ]}
+      countrySlug="uk"
+      featuredUniversities={['Aston University', 'University of East London', 'University of Hertfordshire', 'University of Northumbria', 'Anglia Ruskin University']}
       ctaTitle="Need help with UK admissions?"
       ctaDescription="We guide you from shortlist to visa filing with a tailored plan."
     />

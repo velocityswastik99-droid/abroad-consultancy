@@ -1,11 +1,16 @@
 import StudyCountryPage from '../../components/common/StudyCountryPage';
+import { Award, Building, Clock, DollarSign } from 'lucide-react';
 
 function StudyAustralia() {
   return (
     <StudyCountryPage
       countryName="Australia"
+      countrySlug="australia"
+      featuredUniversities={['University of Melbourne', 'Australian National University', 'University of Sydney', 'Monash University', 'University of Queensland']}
       heroBadge="Innovation and opportunity"
       heroTitle="Study in Australia"
+      countrySlug="australia"
+      featuredUniversities={['University of Melbourne', 'Australian National University', 'University of Sydney', 'Monash University', 'University of Queensland']}
       heroDescription="Australia is known for practical learning, strong industry links, and quality education with a welcoming student environment."
       stats={[
         { label: '43+ Universities', value: '43+', icon: 'Building' },

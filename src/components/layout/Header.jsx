@@ -86,14 +86,14 @@ const Header = () => {
     },
     { 
       name: 'Study Abroad', 
-      path: '/study-usa',
+      path: '/study-uk',
       icon: '🌍',
       roadmap: ['Select', 'Apply', 'Go'],
       dropdown: [
-        { name: 'Study in USA', path: '/study-usa', icon: '🇺🇸' },
         { name: 'Study in UK', path: '/study-uk', icon: '🇬🇧' },
-        { name: 'Study in Canada', path: '/study-canada', icon: '🇨🇦' },
         { name: 'Study in Australia', path: '/study-australia', icon: '🇦🇺' },
+        { name: 'Study in USA', path: '/study-usa', icon: '🇺🇸' },
+        { name: 'Study in Canada', path: '/study-canada', icon: '🇨🇦' },
         { name: 'Study in Germany', path: '/study-germany', icon: '🇩🇪' },
       ]
     },

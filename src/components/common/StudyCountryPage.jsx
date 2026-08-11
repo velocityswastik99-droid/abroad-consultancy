@@ -14,6 +14,8 @@ import {
 
 function StudyCountryPage({
   countryName,
+  countrySlug,
+  featuredUniversities = [],
   heroBadge,
   heroTitle,
   heroDescription,
@@ -27,6 +29,8 @@ function StudyCountryPage({
   ctaTitle,
   ctaDescription,
 }) {
+  const destinationSlug = countrySlug || countryName.toLowerCase().replace(/\s+/g, '-');
+
   return (
     <>
       <div className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-800 text-white">
@@ -69,6 +73,25 @@ function StudyCountryPage({
             </div>
           ))}
         </div>
+
+        {featuredUniversities.length > 0 && (
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-6">Featured Universities in {countryName}</h2>
+            <ul className="space-y-3">
+              {featuredUniversities.map((uni) => (
+                <li key={uni} className="flex items-center justify-between rounded-2xl border border-gray-200 p-4">
+                  <span>{uni}</span>
+                  <Link
+                    to={`/contact?destination=${destinationSlug}`}
+                    className="text-secondary-600 font-semibold hover:text-secondary-700"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           <div className="lg:col-span-2">
@@ -118,9 +141,12 @@ function StudyCountryPage({
                     </div>
                     <div className="text-right">
                       <div className="font-bold text-primary-600">{uni.ranking}</div>
-                      <button className="text-sm text-primary-600 hover:text-primary-700 font-semibold mt-1">
-                        View Details →
-                      </button>
+                      <Link
+                        to={`/contact?destination=${destinationSlug}`}
+                        className="text-sm text-primary-600 hover:text-primary-700 font-semibold mt-1 inline-flex items-center"
+                      >
+                        Contact Us →
+                      </Link>
                     </div>
                   </div>
                 ))}

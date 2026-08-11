@@ -1,10 +1,15 @@
 import StudyCountryPage from '../../components/common/StudyCountryPage';
+import { Award, Building, Clock, DollarSign } from 'lucide-react';
 
 function StudyCanada() {
   return (
     <StudyCountryPage
       countryName="Canada"
+      countrySlug="canada"
+      featuredUniversities={['University of Toronto', 'McGill University', 'University of British Columbia', 'McMaster University', 'University of Waterloo']}
       heroBadge="High quality, welcoming education"
+      countrySlug="canada"
+      featuredUniversities={['University of Toronto', 'McGill University', 'University of British Columbia', 'McMaster University', 'University of Waterloo']}
       heroTitle="Study in Canada"
       heroDescription="Canada is a top choice for students seeking affordable education, excellent research opportunities, and a safe multicultural environment."
       stats={[

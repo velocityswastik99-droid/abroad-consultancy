@@ -90,17 +90,6 @@ const Home = () => {
   const countries = [
     {
       id: 1,
-      slug: 'usa',
-      name: 'United States',
-      title: 'Study in USA',
-      description: 'World-class education with extensive research opportunities and diverse cultural experiences.',
-      universities: 4000,
-      averageTuition: '$25,000 - $50,000',
-      popularCourses: ['Computer Science', 'Business Administration'],
-      flag: '🇺🇸'
-    },
-    {
-      id: 2,
       slug: 'uk',
       name: 'United Kingdom',
       title: 'Study in UK',
@@ -111,18 +100,7 @@ const Home = () => {
       flag: '🇬🇧'
     },
     {
-      id: 3,
-      slug: 'canada',
-      name: 'Canada',
-      title: 'Study in Canada',
-      description: 'High-quality education, affordable tuition fees, and excellent post-study work opportunities.',
-      universities: 96,
-      averageTuition: 'CAD 15,000 - CAD 35,000',
-      popularCourses: ['Computer Science', 'Business'],
-      flag: '🇨🇦'
-    },
-    {
-      id: 4,
+      id: 2,
       slug: 'australia',
       name: 'Australia',
       title: 'Study in Australia',
@@ -131,6 +109,28 @@ const Home = () => {
       averageTuition: 'AUD 20,000 - AUD 45,000',
       popularCourses: ['Hospitality', 'Engineering'],
       flag: '🇦🇺'
+    },
+    {
+      id: 3,
+      slug: 'usa',
+      name: 'United States',
+      title: 'Study in USA',
+      description: 'World-class education with extensive research opportunities and diverse cultural experiences.',
+      universities: 4000,
+      averageTuition: '$25,000 - $50,000',
+      popularCourses: ['Computer Science', 'Business Administration'],
+      flag: '🇺🇸'
+    },
+    {
+      id: 4,
+      slug: 'canada',
+      name: 'Canada',
+      title: 'Study in Canada',
+      description: 'High-quality education, affordable tuition fees, and excellent post-study work opportunities.',
+      universities: 96,
+      averageTuition: 'CAD 15,000 - CAD 35,000',
+      popularCourses: ['Computer Science', 'Business'],
+      flag: '🇨🇦'
     },
     {
       id: 5,
@@ -303,6 +303,32 @@ const Home = () => {
       </div>
 
       <HeroSection />
+
+      <section id="your-journey-starts" className="section-padding bg-white">
+        <div className="container-custom px-4">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <p className="text-sm uppercase tracking-[0.3em] text-secondary-600 mb-3">Your Journey Starts</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Start your study abroad journey today</h2>
+            <p className="text-gray-600">
+              Select a destination, explore universities, and contact our support team for a fast, easy application process.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3 items-center">
+            {[
+              { title: 'United Kingdom', description: 'Shorter programs, prestigious universities', href: '/study-uk' },
+              { title: 'Australia', description: 'Research-led programs with industry links', href: '/study-australia' },
+              { title: 'USA', description: 'Top-ranked universities and flexible study options', href: '/study-usa' }
+            ].map((item) => (
+              <div key={item.title} className="rounded-3xl border border-gray-200 p-8 text-center hover:shadow-xl transition">
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-gray-600 mb-6">{item.description}</p>
+                <a href={item.href} className="text-secondary-600 font-semibold hover:text-secondary-700">Explore {item.title}</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       
       {/* Why Choose Us - Roadmap Style */}
       <section className="section-padding bg-slate-50 relative overflow-hidden">

@@ -59,6 +59,18 @@ const StudyUSA = () => {
       </div>
 
       <div className="container-custom py-16">
+        <div className="bg-white rounded-3xl shadow-lg p-8 mb-10">
+          <h2 className="text-3xl font-bold mb-6">Popular USA Universities</h2>
+          <ul className="space-y-4 text-gray-700">
+            {['Harvard University', 'Stanford University', 'MIT', 'UC Berkeley', 'UCLA'].map((uni) => (
+              <li key={uni} className="flex items-center justify-between rounded-2xl border border-gray-200 p-4 hover:border-primary-500 transition">
+                <span>{uni}</span>
+                <a href="/contact?destination=usa" className="text-primary-600 font-semibold hover:text-primary-700">Contact Us</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           <div className="bg-white rounded-xl shadow-lg p-6 text-center">

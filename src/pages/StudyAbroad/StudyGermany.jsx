@@ -1,10 +1,15 @@
 import StudyCountryPage from '../../components/common/StudyCountryPage';
+import { Award, Building, Clock, DollarSign } from 'lucide-react';
 
 function StudyGermany() {
   return (
     <StudyCountryPage
       countryName="Germany"
+      countrySlug="germany"
+      featuredUniversities={['Technical University of Munich', 'Ludwig Maximilian University of Munich', 'Heidelberg University', 'RWTH Aachen University', 'Humboldt University of Berlin']}
       heroBadge="Affordable education with global value"
+      countrySlug="germany"
+      featuredUniversities={['Technical University of Munich', 'Ludwig Maximilian University of Munich', 'Heidelberg University', 'RWTH Aachen University', 'Humboldt University of Berlin']}
       heroTitle="Study in Germany"
       heroDescription="Germany offers world-class engineering programs, low tuition at public universities, and strong postgraduate opportunities."
       stats={[
